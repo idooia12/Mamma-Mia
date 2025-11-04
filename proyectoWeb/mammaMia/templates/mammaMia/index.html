@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Pizzas</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #fafafa; padding: 20px; }
+        h1 { color: #b30000; }
+        .pizza {
+            background: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .precio { font-weight: bold; color: #228822; }
+        .ingredientes { font-style: italic; }
+    </style>
+</head>
+<body>
+
+    <h1>🍕 Lista de Pizzas</h1>
+
+    {% if pizzas %}
+        {% for pizza in pizzas %}
+            <div class="pizza">
+                <h2>{{ pizza.nombre }}</h2>
+                <p><strong>Masa:</strong> {{ pizza.masa.nombre }}</p>
+                <p><strong>Precio:</strong> <span class="precio">{{ pizza.precio }} €</span></p>
+
+                {% if pizza.descripcion %}
+                    <p>{{ pizza.descripcion }}</p>
+                {% endif %}
+
+                {% if pizza.ingredientes.all %}
+                    <p class="ingredientes">
+                        <strong>Ingredientes:</strong>
+                        {% for ing in pizza.ingredientes.all %}
+                            {{ ing.nombre }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No hay pizzas en la base de datos aún.</p>
+    {% endif %}
+
+</body>
+</html>
