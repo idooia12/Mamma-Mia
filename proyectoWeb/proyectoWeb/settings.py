@@ -128,3 +128,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 #Comandos para runear: workon env1, me meto en las carpetas, python manage.py runserver.
+#Subir a github: git add . , git commit -m "mensaje", git push origin main

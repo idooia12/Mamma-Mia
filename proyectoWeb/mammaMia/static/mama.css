@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #fff7e6;
+    padding: 20px;
+    margin: 0;
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+    background: #b30000;
+    color: white;
+}
+
+h1 {
+    margin: 0;
+}
+
+nav {
+    text-align: center;
+    background: #ffe4c4;
+    padding: 10px;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.contenedor {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+.pizza {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: .2s;
+}
+
+.pizza:hover {
+    transform: scale(1.02);
+}
+
+.precio {
+    font-weight: bold;
+    color: #008000;
+}
+
+footer {
+    text-align: center;
+    background: #333;
+    color: white;
+    padding: 15px;
+    margin-top: 30px;
+}
+.detalle {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.boton-volver {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 15px;
+    background: #b30000;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.boton-volver:hover {
+    background: #7a0000;
+}

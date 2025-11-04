@@ -3,28 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Mamma Mia 🍕 - Portada</title>
-    <style>
-        body { font-family: Arial, sans-serif; background: #fff7e6; padding: 20px; margin: 0; }
-        header { text-align: center; padding: 20px 0; background: #b30000; color: white; }
-        h1 { margin: 0; }
-        .contenedor { max-width: 900px; margin: auto; padding: 20px; }
-        .pizza {
-            background: white;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 10px;
-            border: 1px solid #ddd;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .precio { font-weight: bold; color: #008000; }
-        footer {
-            text-align: center;
-            background: #333;
-            color: white;
-            padding: 15px;
-            margin-top: 30px;
-        }
-    </style>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'mama.css' %}">
 </head>
 <body>
 
@@ -33,9 +14,9 @@
     <p>¡Elige tu masa y encuentra tu pizza perfecta!</p>
 </header>
 
-<nav style="text-align:center; background:#ffe4c4; padding:10px;">
-    <a href="{% url 'index' %}" style="margin: 0 15px;">🏠 Inicio</a>
-    <a href="{% url 'todasLasPizzas' %}" style="margin: 0 15px;">📋 Todas las pizzas</a>
+<nav>
+    <a href="{% url 'index' %}">🏠 Inicio</a>
+    <a href="{% url 'todasLasPizzas' %}">📋 Todas las pizzas</a>
 </nav>
 
 <div class="contenedor">

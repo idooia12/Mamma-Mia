@@ -2,29 +2,52 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>{{ pizza.nombre }}</title>
+    <title>{{ pizza.nombre }} - Mamma Mia</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'mama.css' %}">
 </head>
 <body>
 
-<h1>{{ pizza.nombre }}</h1>
+<header>
+    <h1>🍕 Mamma Mia</h1>
+    <p>Detalles de la pizza seleccionada</p>
+</header>
 
-<p><strong>Masa:</strong> {{ pizza.masa.nombre }}</p>
-<p><strong>Precio:</strong> {{ pizza.precio }} €</p>
+<nav>
+    <a href="{% url 'index' %}">🏠 Inicio</a>
+    <a href="{% url 'todasLasPizzas' %}">📋 Todas las pizzas</a>
+</nav>
 
-{% if pizza.descripcion %}
-<p>{{ pizza.descripcion }}</p>
-{% endif %}
+<div class="contenedor">
 
-<h3>Ingredientes:</h3>
-<ul>
-    {% for ing in pizza.ingredientes.all %}
-        <li>{{ ing.nombre }}</li>
-    {% empty %}
-        <li>No tiene ingredientes registrados.</li>
-    {% endfor %}
-</ul>
+    <div class="detalle">
+        <h2>{{ pizza.nombre }}</h2>
 
-<a href="{% url 'index' %}">Volver al menú</a>
+        <p><strong>Masa:</strong> {{ pizza.masa.nombre }}</p>
+        <p><strong>Precio:</strong> <span class="precio">{{ pizza.precio }} €</span></p>
+
+        {% if pizza.descripcion %}
+            <p>{{ pizza.descripcion }}</p>
+        {% endif %}
+
+        <h3>Ingredientes:</h3>
+        <ul>
+            {% for ing in pizza.ingredientes.all %}
+                <li>{{ ing.nombre }}</li>
+            {% empty %}
+                <li>No tiene ingredientes registrados.</li>
+            {% endfor %}
+        </ul>
+
+        <a class="boton-volver" href="{% url 'todasLasPizzas' %}">⬅ Volver al listado</a>
+    </div>
+
+</div>
+
+<footer>
+    <p>© Mamma Mia 🍕</p>
+</footer>
 
 </body>
 </html>

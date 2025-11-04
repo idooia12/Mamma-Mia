@@ -3,45 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Todas las pizzas - Mamma Mia</title>
-    <style>
-        body { font-family: Arial, sans-serif; background: #fff7e6; padding: 20px; }
-        h1 { color: #b30000; text-align:center; }
-        .pizza {
-            background: white;
-            padding: 15px;
-            margin: 10px auto;
-            border-radius: 10px;
-            border: 1px solid #ddd;
-            max-width: 650px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .precio { font-weight: bold; color: #008000; }
-        a { text-decoration: none; color: inherit; }
-        nav { text-align:center; background:#ffe4c4; padding:10px; margin-bottom: 20px;}
-        footer { text-align:center; margin-top:30px; color:#444; }
-    </style>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'mama.css' %}">
 </head>
 <body>
 
+<header>
+    <h1>🍕 Mamma Mia</h1>
+    <p>Listado completo de nuestras pizzas</p>
+</header>
+
 <nav>
-    <a href="{% url 'index' %}" style="margin: 0 15px;">🏠 Inicio</a>
-    <a href="{% url 'todasLasPizzas' %}" style="margin: 0 15px;">📋 Todas las pizzas</a>
+    <a href="{% url 'index' %}">🏠 Inicio</a>
+    <a href="{% url 'todasLasPizzas' %}">📋 Todas las pizzas</a>
 </nav>
 
-<h1>📋 Todas las Pizzas</h1>
+<div class="contenedor">
 
-{% for pizza in pizzas %}
-    <a href="{% url 'detallePizza' pizza.id %}">
-        <div class="pizza">
-            <h2>{{ pizza.nombre }}</h2>
-            <p><strong>Masa:</strong> {{ pizza.masa.nombre }}</p>
-            <p><strong>Precio:</strong> <span class="precio">{{ pizza.precio }} €</span></p>
-        </div>
-    </a>
-{% endfor %}
+    <h1 style="text-align:center;">📋 Todas las Pizzas</h1>
+
+    {% if pizzas %}
+        {% for pizza in pizzas %}
+            <a href="{% url 'detallePizza' pizza.id %}" style="text-decoration:none; color:inherit;">
+                <div class="pizza">
+                    <h2>{{ pizza.nombre }}</h2>
+                    <p><strong>Masa:</strong> {{ pizza.masa.nombre }}</p>
+                    <p><strong>Precio:</strong> <span class="precio">{{ pizza.precio }} €</span></p>
+                </div>
+            </a>
+        {% endfor %}
+    {% else %}
+        <p>No hay pizzas registradas todavía.</p>
+    {% endif %}
+</div>
 
 <footer>
-    <p>© Mamma Mia🍕</p>
+    <p>© Mamma Mia 🍕</p>
 </footer>
 
 </body>
