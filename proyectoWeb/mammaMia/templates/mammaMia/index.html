@@ -33,19 +33,26 @@
     <p>¡Elige tu masa y encuentra tu pizza perfecta!</p>
 </header>
 
+<nav style="text-align:center; background:#ffe4c4; padding:10px;">
+    <a href="{% url 'index' %}" style="margin: 0 15px;">🏠 Inicio</a>
+    <a href="{% url 'todasLasPizzas' %}" style="margin: 0 15px;">📋 Todas las pizzas</a>
+</nav>
+
 <div class="contenedor">
 
     {% if pizzas %}
         {% for pizza in pizzas %}
-            <div class="pizza">
-                <h2>{{ pizza.nombre }}</h2>
-                <p><strong>Masa:</strong> {{ pizza.masa.nombre }}</p>
-                <p><strong>Precio:</strong> <span class="precio">{{ pizza.precio }} €</span></p>
+            <a href="{% url 'detallePizza' pizza.id %}" style="text-decoration:none; color:inherit;">
+                <div class="pizza">
+                    <h2>{{ pizza.nombre }}</h2>
+                    <p><strong>Masa:</strong> {{ pizza.masa.nombre }}</p>
+                    <p><strong>Precio:</strong> <span class="precio">{{ pizza.precio }} €</span></p>
 
-                {% if pizza.descripcion %}
-                    <p>{{ pizza.descripcion }}</p>
-                {% endif %}
-            </div>
+                    {% if pizza.descripcion %}
+                        <p>{{ pizza.descripcion }}</p>
+                    {% endif %}
+                </div>
+            </a>
         {% endfor %}
     {% else %}
         <p>No hay pizzas disponibles todavía.</p>

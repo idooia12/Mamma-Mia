@@ -16,6 +16,11 @@ def index(request):
 
     return render(request, 'mammaMia/index.html', {'pizzas': pizzas_destacadas})
 
+def todasLasPizzas(request):
+    pizzas = Pizza.objects.all().order_by('precio')
+    return render(request, 'mammaMia/todasPizzas.html', {'pizzas': pizzas})
+
+
 class DetallePizza(DetailView):
     model = Pizza
     template_name = 'mammaMia/detallePizza.html'
