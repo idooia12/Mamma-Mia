@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ pizza.nombre }}</title>
+</head>
+<body>
+
+<h1>{{ pizza.nombre }}</h1>
+
+<p><strong>Masa:</strong> {{ pizza.masa.nombre }}</p>
+<p><strong>Precio:</strong> {{ pizza.precio }} €</p>
+
+{% if pizza.descripcion %}
+<p>{{ pizza.descripcion }}</p>
+{% endif %}
+
+<h3>Ingredientes:</h3>
+<ul>
+    {% for ing in pizza.ingredientes.all %}
+        <li>{{ ing.nombre }}</li>
+    {% empty %}
+        <li>No tiene ingredientes registrados.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'index' %}">Volver al menú</a>
+
+</body>
+</html>

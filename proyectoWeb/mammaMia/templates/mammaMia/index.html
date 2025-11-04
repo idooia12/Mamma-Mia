@@ -2,24 +2,38 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Pizzas</title>
+    <title>Mamma Mia 🍕 - Portada</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #fafafa; padding: 20px; }
-        h1 { color: #b30000; }
+        body { font-family: Arial, sans-serif; background: #fff7e6; padding: 20px; margin: 0; }
+        header { text-align: center; padding: 20px 0; background: #b30000; color: white; }
+        h1 { margin: 0; }
+        .contenedor { max-width: 900px; margin: auto; padding: 20px; }
         .pizza {
             background: white;
             padding: 15px;
-            margin-bottom: 10px;
-            border-radius: 8px;
+            margin-bottom: 15px;
+            border-radius: 10px;
             border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        .precio { font-weight: bold; color: #228822; }
-        .ingredientes { font-style: italic; }
+        .precio { font-weight: bold; color: #008000; }
+        footer {
+            text-align: center;
+            background: #333;
+            color: white;
+            padding: 15px;
+            margin-top: 30px;
+        }
     </style>
 </head>
 <body>
 
-    <h1>🍕 Lista de Pizzas</h1>
+<header>
+    <h1>🍕 Bienvenido a Mamma Mia</h1>
+    <p>¡Elige tu masa y encuentra tu pizza perfecta!</p>
+</header>
+
+<div class="contenedor">
 
     {% if pizzas %}
         {% for pizza in pizzas %}
@@ -31,20 +45,17 @@
                 {% if pizza.descripcion %}
                     <p>{{ pizza.descripcion }}</p>
                 {% endif %}
-
-                {% if pizza.ingredientes.all %}
-                    <p class="ingredientes">
-                        <strong>Ingredientes:</strong>
-                        {% for ing in pizza.ingredientes.all %}
-                            {{ ing.nombre }}{% if not forloop.last %}, {% endif %}
-                        {% endfor %}
-                    </p>
-                {% endif %}
             </div>
         {% endfor %}
     {% else %}
-        <p>No hay pizzas en la base de datos aún.</p>
+        <p>No hay pizzas disponibles todavía.</p>
     {% endif %}
+
+</div>
+
+<footer>
+    <p>© Mamma Mia🍕</p>
+</footer>
 
 </body>
 </html>
