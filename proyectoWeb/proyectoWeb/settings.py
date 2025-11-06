@@ -128,8 +128,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+
 #Comandos para runear: workon env1, me meto en las carpetas, python manage.py runserver
 #Crear migraciones: python manage.py makemigrations, python manage.py migrate
-#Crear superusuario: python manage.py createsuperuser
+#Crear superusuario: python manage.py createsuperuser, superusuario: admin, pass: admin1234
 #Cargar de github: git branch, git fetch, git pull origin main
 #Subir a github: git add . , git commit -m "mensaje", git push origin main  
