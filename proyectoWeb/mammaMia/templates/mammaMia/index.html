@@ -32,6 +32,11 @@
                     {% if pizza.descripcion %}
                         <p>{{ pizza.descripcion }}</p>
                     {% endif %}
+                    {% if pizza.imagen %}
+                        <img src="{{ pizza.imagen.url }}" alt="{{ pizza.nombre }}" width="300">
+                    {% else %}
+                        <p>Sin imagen disponible</p>
+                    {% endif %}
                 </div>
             </a>
         {% endfor %}

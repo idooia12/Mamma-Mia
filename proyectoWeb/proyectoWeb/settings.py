@@ -119,13 +119,17 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-
-
-#Comandos para runear: workon env1, me meto en las carpetas, python manage.py runserver.
-#Subir a github: git add . , git commit -m "mensaje", git push origin main
+#Comandos para runear: workon env1, me meto en las carpetas, python manage.py runserver
+#Crear migraciones: python manage.py makemigrations, python manage.py migrate
+#Crear superusuario: python manage.py createsuperuser
+#Cargar de github: git branch, git fetch, git pull origin main
+#Subir a github: git add . , git commit -m "mensaje", git push origin main  
