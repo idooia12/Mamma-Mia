@@ -18,7 +18,33 @@ def index(request):
 
 def todasLasPizzas(request):
     pizzas = Pizza.objects.all().order_by('precio')
-    return render(request, 'mammaMia/todasPizzas.html', {'pizzas': pizzas})
+    masas = Masa.objects.all().order_by('nombre')
+    ingredientes = Ingrediente.objects.all()
+    
+    # Obtenemos los filtros enviados desde el formulario
+    masa_id = request.GET.get('masa')
+    ingredientes_ids = request.GET.getlist('ingredientes')
+
+    # Filtro por masa
+    if masa_id:
+        pizzas = pizzas.filter(masa_id=masa_id)
+
+    # Filtro por ingredientes (todas las seleccionadas deben estar en la pizza)
+    if ingredientes_ids:
+        for ing_id in ingredientes_ids:
+            pizzas = pizzas.filter(ingredientes__id=ing_id)
+
+    pizzas = pizzas.distinct()  # evitar duplicados si hay joins
+
+    context = {
+        'pizzas': pizzas,
+        'masas': masas,
+        'ingredientes': ingredientes,
+        'masa_seleccionada': masa_id,
+        'ingredientes_seleccionados': list(map(int, ingredientes_ids))
+    }
+
+    return render(request, 'mammaMia/todasLasPizzas.html', context)
 
 
 class DetallePizza(DetailView):

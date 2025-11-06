@@ -20,29 +20,41 @@
 </nav>
 
 <div class="contenedor">
-
+    
     <div class="detalle">
-        <h2>{{ pizza.nombre }}</h2>
+        <div class="detalle-contenido">
+            <div class="detalle-info">
+                <h2>{{ pizza.nombre }}</h2>
 
-        <p><strong>Masa:</strong> {{ pizza.masa.nombre }}</p>
-        <p><strong>Precio:</strong> <span class="precio">{{ pizza.precio }} €</span></p>
+                <p><strong>Masa:</strong> {{ pizza.masa.nombre }}</p>
+                <p><strong>Precio:</strong> <span class="precio">{{ pizza.precio }} €</span></p>
 
-        {% if pizza.descripcion %}
-            <p>{{ pizza.descripcion }}</p>
-        {% endif %}
+                {% if pizza.descripcion %}
+                    <p>{{ pizza.descripcion }}</p>
+                {% endif %}
 
-        <h3>Ingredientes:</h3>
-        <ul>
-            {% for ing in pizza.ingredientes.all %}
-                <li>{{ ing.nombre }}</li>
-            {% empty %}
-                <li>No tiene ingredientes registrados.</li>
-            {% endfor %}
-        </ul>
+                <h3>Ingredientes:</h3>
+                <ul>
+                    {% for ing in pizza.ingredientes.all %}
+                        <li>{{ ing.nombre }}</li>
+                    {% empty %}
+                        <li>No tiene ingredientes registrados.</li>
+                    {% endfor %}
+                </ul>
 
-        <a class="boton-volver" href="{% url 'todasLasPizzas' %}">⬅ Volver al listado</a>
+                <a class="boton-volver" href="{% url 'todasLasPizzas' %}">⬅ Volver al listado</a>
+            </div>
+
+            <div class="detalle-imagen">
+                {% if pizza.imagen %}
+                    <img src="{{ pizza.imagen.url }}" alt="{{ pizza.nombre }}">
+                {% else %}
+                    <p>Sin imagen disponible</p>
+                {% endif %}
+            </div>
+        </div>
     </div>
-
+    
 </div>
 
 <footer>

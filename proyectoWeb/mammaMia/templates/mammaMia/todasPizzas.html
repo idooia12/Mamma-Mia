@@ -23,15 +23,59 @@
 
     <h1 style="text-align:center;">📋 Todas las Pizzas</h1>
 
+    <form method="get" class="filtro-form">
+        <div class="filtros">
+            <div class="filtro-masa">
+                <label for="masa">Filtrar por masa:</label>
+                <select name="masa" id="masa">
+                    <option value="">-- Todas las masas --</option>
+                    {% for masa in masas %}
+                        <option value="{{ masa.id }}" {% if masa.id|stringformat:"s" == masa_seleccionada %}selected{% endif %}>
+                            {{ masa.nombre }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="filtro-ingredientes">
+                <label>Filtrar por ingredientes:</label>
+                <div class="ingredientes-lista">
+                    {% for ing in ingredientes %}
+                        <label>
+                            <input type="checkbox" name="ingredientes" value="{{ ing.id }}"
+                                {% if ing.id in ingredientes_seleccionados %}checked{% endif %}>
+                            {{ ing.nombre }}
+                        </label>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <button type="submit" class="boton-filtrar">Buscar</button>
+            <a href="{% url 'todasLasPizzas' %}" class="boton-limpiar">Limpiar</a>
+        </div>
+    </form>
+
     {% if pizzas %}
         {% for pizza in pizzas %}
-            <a href="{% url 'detallePizza' pizza.id %}" style="text-decoration:none; color:inherit;">
-                <div class="pizza">
-                    <h2>{{ pizza.nombre }}</h2>
+        <div class="pizza">
+            <div class="pizza-contenido">
+                <div class="pizza-info">
+                    <a href="{% url 'detallePizza' pizza.id %}" class="pizza-link"></a>
+                        <h2>{{ pizza.nombre }}</h2>
+                    </a>
                     <p><strong>Masa:</strong> {{ pizza.masa.nombre }}</p>
                     <p><strong>Precio:</strong> <span class="precio">{{ pizza.precio }} €</span></p>
                 </div>
-            </a>
+
+                <div class="pizza-imagen">
+                    {% if pizza.imagen %}
+                        <img src="{{ pizza.imagen.url }}" alt="{{ pizza.nombre }}">
+                    {% else %}
+                        <p>Sin imagen disponible</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
         {% endfor %}
     {% else %}
         <p>No hay pizzas registradas todavía.</p>

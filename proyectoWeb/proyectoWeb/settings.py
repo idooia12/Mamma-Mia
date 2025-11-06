@@ -133,4 +133,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #Crear migraciones: python manage.py makemigrations, python manage.py migrate
 #Crear superusuario: python manage.py createsuperuser, superusuario: admin, email: admin@gmail.com, pass: admin1234
 #Cargar de github: git branch, git fetch, git pull origin main
-#Subir a github: git add . , git commit -m "mensaje", git push origin main  
+#Subir a github: git add . , git commit -m "mensaje", git push origin main
+#Instalar Pillow para manejo de imágenes: pip install Pillow
+#Limpiar caché del sitio web: Ctrl + F5 (Windows)
