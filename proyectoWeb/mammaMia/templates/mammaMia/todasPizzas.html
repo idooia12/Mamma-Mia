@@ -19,42 +19,46 @@
     <a href="{% url 'todasLasPizzas' %}">📋 Todas las pizzas</a>
 </nav>
 
-<div class="contenedor">
+<div class="filtros-container">
+    <form method="get">
+        
+        <!-- Filtro por masa -->
+        <div class="filtro-seccion">
+            <label for="masa" class="filtro-label">Filtrar por masa:</label>
+            <select name="masa" id="masa" class="select-masa">
+                <option value="">Todas</option>
+                {% for masa in masas %}
+                <option value="{{ masa.id }}" {% if masa_seleccionada == masa.id|stringformat:"s" %}selected{% endif %}>
+                    {{ masa.nombre }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
 
-    <h1 style="text-align:center;">📋 Todas las Pizzas</h1>
-
-    <form method="get" class="filtro-form">
-        <div class="filtros">
-            <div class="filtro-masa">
-                <label for="masa">Filtrar por masa:</label>
-                <select name="masa" id="masa">
-                    <option value="">-- Todas las masas --</option>
-                    {% for masa in masas %}
-                        <option value="{{ masa.id }}" {% if masa.id|stringformat:"s" == masa_seleccionada %}selected{% endif %}>
-                            {{ masa.nombre }}
-                        </option>
-                    {% endfor %}
-                </select>
+        <!-- Filtro por ingredientes -->
+        <div class="filtro-seccion ingredientes-grid">
+            <span class="filtro-label">Filtrar por ingredientes:</span>
+            <div class="grid-ingredientes">
+                {% for ingrediente in ingredientes %}
+                <label class="checkbox-ingrediente">
+                    <input type="checkbox" name="ingredientes" value="{{ ingrediente.id }}"
+                    {% if ingrediente.id in ingredientes_seleccionados %}checked{% endif %}>
+                    {{ ingrediente.nombre }}
+                </label>
+                {% endfor %}
             </div>
+        </div>
 
-            <div class="filtro-ingredientes">
-                <label>Filtrar por ingredientes:</label>
-                <div class="ingredientes-lista">
-                    {% for ing in ingredientes %}
-                        <label>
-                            <input type="checkbox" name="ingredientes" value="{{ ing.id }}"
-                                {% if ing.id in ingredientes_seleccionados %}checked{% endif %}>
-                            {{ ing.nombre }}
-                        </label>
-                    {% endfor %}
-                </div>
-            </div>
-
-            <button type="submit" class="boton-filtrar">Buscar</button>
-            <a href="{% url 'todasLasPizzas' %}" class="boton-limpiar">Limpiar</a>
+        <!-- Botones -->
+        <div class="botones-filtro">
+            <button type="submit" class="btn-buscar">Buscar</button>
+            <a href="{% url 'todasLasPizzas' %}" class="btn-limpiar">Limpiar</a>
         </div>
     </form>
+</div>
 
+<div class="contenedor">
+    
     {% if pizzas %}
         {% for pizza in pizzas %}
         <div class="pizza">
