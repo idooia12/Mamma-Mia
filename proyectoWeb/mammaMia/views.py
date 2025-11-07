@@ -15,11 +15,11 @@ def index(request):
             pizzas_destacadas.append(pizza)
 
     return render(request, 'mammaMia/index.html', {'pizzas': pizzas_destacadas})
-'''
+
 def todasLasPizzas(request):
     pizzas = Pizza.objects.all().order_by('precio')
     masas = Masa.objects.all().order_by('nombre')
-    ingredientes = Ingrediente.objects.all()
+    ingredientes = Ingrediente.objects.all().order_by('nombre')
     
     # Obtenemos los filtros enviados desde el formulario
     masa_id = request.GET.get('masa')
@@ -41,48 +41,11 @@ def todasLasPizzas(request):
         'masas': masas,
         'ingredientes': ingredientes,
         'masa_seleccionada': masa_id,
-        'ingredientes_seleccionados': list(map(int, ingredientes_ids))
-    }
-
-    return render(request, 'mammaMia/todasLasPizzas.html', context)
-'''
-def todasLasPizzas(request):
-    pizzas = Pizza.objects.all().order_by('precio')
-    masas = Masa.objects.all().order_by('nombre')
-    ingredientes = Ingrediente.objects.all()
-    
-    # Obtenemos los filtros enviados desde el formulario
-    masa_id = request.GET.get('masa')
-    ingredientes_ids = request.GET.getlist('ingredientes')
-
-    # Filtro por masa
-    if masa_id:
-        pizzas = pizzas.filter(masa_id=masa_id)
-
-    # Filtro por ingredientes (todas las seleccionadas deben estar en la pizza)
-    if ingredientes_ids:
-        for ing_id in ingredientes_ids:
-            pizzas = pizzas.filter(ingredientes__id=ing_id)
-
-    pizzas = pizzas.distinct()  # evitar duplicados si hay joins
-
-    context = {
-        'pizzas': pizzas,
-        'masas': masas,
-        'ingredientes': ingredientes,
-        'masa_seleccionada': masa_id,
-        'ingredientes_seleccionados': list(map(int, ingredientes_ids))
+        'ingredientes_seleccionados': [int(i) for i in ingredientes_ids],
     }
 
     return render(request, 'mammaMia/todasPizzas.html', context)
 
-def todasLasMasas(request):
-    masas = Masa.objects.all().order_by('nombre')
-    return render(request, 'mammaMia/todasMasas.html', {'masas': masas})
-
-def todosLosIngredientes(request):
-    ingredientes = Ingrediente.objects.all().order_by('nombre')
-    return render(request, 'mammaMia/todosIngredientes.html', {'ingredientes': ingredientes})
 
 class DetallePizza(DetailView):
     model = Pizza

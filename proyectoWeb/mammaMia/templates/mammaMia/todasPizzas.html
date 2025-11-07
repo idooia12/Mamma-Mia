@@ -1,16 +1,64 @@
-{% extends 'mammaMia/base.html' %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Todas las pizzas - Mamma Mia</title>
 
-{% block title %}Todas las pizzas - Mamma Mia{% endblock %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'mama.css' %}">
+</head>
+<body>
 
-{% block subtitle %}Listado completo de nuestras pizzas{% endblock %}
+<header>
+    <h1>🍕 Mamma Mia</h1>
+    <p>Listado completo de nuestras pizzas</p>
+</header>
 
-{% block content %}
-    <h1 style="text-align:center;">📋 Todas las Pizzas</h1>
+<nav>
+    <a href="{% url 'index' %}">🏠 Inicio</a>
+    <a href="{% url 'todasLasPizzas' %}">📋 Todas las pizzas</a>
+</nav>
 
-    <form method="get" class="filtro-form">
-        <!-- ... (mantén todo el contenido del form igual) ... -->
+<div class="filtros-container">
+    <form method="get">
+        
+        <!-- Filtro por masa -->
+        <div class="filtro-seccion">
+            <label for="masa" class="filtro-label">Filtrar por masa:</label>
+            <select name="masa" id="masa" class="select-masa">
+                <option value="">Todas</option>
+                {% for masa in masas %}
+                <option value="{{ masa.id }}" {% if masa_seleccionada == masa.id|stringformat:"s" %}selected{% endif %}>
+                    {{ masa.nombre }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Filtro por ingredientes -->
+        <div class="filtro-seccion ingredientes-grid">
+            <span class="filtro-label">Filtrar por ingredientes:</span>
+            <div class="grid-ingredientes">
+                {% for ingrediente in ingredientes %}
+                <label class="checkbox-ingrediente">
+                    <input type="checkbox" name="ingredientes" value="{{ ingrediente.id }}"
+                    {% if ingrediente.id in ingredientes_seleccionados %}checked{% endif %}>
+                    {{ ingrediente.nombre }}
+                </label>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Botones -->
+        <div class="botones-filtro">
+            <button type="submit" class="btn-buscar">Buscar</button>
+            <a href="{% url 'todasLasPizzas' %}" class="btn-limpiar">Limpiar</a>
+        </div>
     </form>
+</div>
 
+<div class="contenedor">
+    
     {% if pizzas %}
         {% for pizza in pizzas %}
         <div class="pizza">
