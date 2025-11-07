@@ -3,7 +3,9 @@ from django.db import models
 # Create your models here.
 class Masa(models.Model):
     nombre = models.CharField(max_length=50, unique=True)
-    descripcion = models.TextField(blank=True)    
+    descripcion = models.TextField(blank=True)
+    imagen = models.ImageField(upload_to='masas/', blank=True, null=True)
+    
     
     def __str__(self):
         return self.nombre

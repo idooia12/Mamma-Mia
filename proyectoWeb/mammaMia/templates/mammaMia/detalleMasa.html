@@ -1,0 +1,40 @@
+{% extends 'mammaMia/base.html' %}
+
+{% block title %}{{ masa.nombre }} - Mamma Mia{% endblock %}
+
+{% block subtitle %}Detalles del tipo de masa{% endblock %}
+
+{% block content %}
+    <div class="detalle">
+        <div class="detalle-contenido">
+            <div class="detalle-info">
+                <h2>{{ masa.nombre }}</h2>
+                <p>{{ masa.descripcion }}</p>
+                
+                <h3>Pizzas con esta masa:</h3>
+                {% if masa.pizzas.all %}
+                    <ul>
+                        {% for pizza in masa.pizzas.all %}
+                        <li>
+                            <a href="{% url 'detallePizza' pizza.pk %}" class="enlace-ingrediente">{{ pizza.nombre }}</a> 
+                            - {{ pizza.precio }}€
+                        </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No hay pizzas con este tipo de masa.</p>
+                {% endif %}
+                
+                <a class="boton-volver" href="{% url 'todasLasMasas' %}">⬅ Volver a masas</a>
+            </div>
+
+            <div class="detalle-imagen">
+                {% if masa.imagen %}
+                    <img src="{{ masa.imagen.url }}" alt="{{ masa.nombre }}">
+                {% else %}
+                    <p>Sin imagen disponible</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

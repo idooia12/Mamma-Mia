@@ -8,14 +8,22 @@
     <h1>🧀 Ingredientes</h1>
     
     {% if ingredientes %}
-        <div class="grid-container">
+        <div class="contenedor">
             {% for ingrediente in ingredientes %}
-            <div class="card">
-                <h3><a href="{% url 'detalleIngrediente' ingrediente.pk %}">{{ ingrediente.nombre }}</a></h3>
-                <p>{{ ingrediente.descripcion }}</p>
-                {% if ingrediente.alergeno %}
-                <span class="alergeno">⚠️ Contiene alérgenos</span>
-                {% endif %}
+            <div class="pizza">
+                <a href="{% url 'detalleIngrediente' ingrediente.pk %}" class="pizza-link"></a>
+                <div class="pizza-contenido">
+                    <div class="pizza-info">
+                        <h2>{{ ingrediente.nombre }}</h2>
+                        <p>{{ ingrediente.descripcion|truncatewords:15 }}</p>
+                        {% if ingrediente.alergeno %}
+                        <span class="alergeno">⚠️ Contiene alérgenos</span>
+                        {% endif %}
+                    </div>
+                    <div class="pizza-imagen">
+                        <p>🧀</p>
+                    </div>
+                </div>
             </div>
             {% endfor %}
         </div>

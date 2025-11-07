@@ -8,11 +8,25 @@
     <h1>🍞 Tipos de Masa</h1>
     
     {% if masas %}
-        <div class="grid-container">
+        <div class="contenedor">
             {% for masa in masas %}
-            <div class="card">
-                <h3><a href="{% url 'detalleMasa' masa.pk %}">{{ masa.nombre }}</a></h3>
-                <p>{{ masa.descripcion }}</p>
+            <div class="pizza">
+                <div class="pizza-contenido">
+                    <div class="pizza-info">
+                        <a href="{% url 'detalleMasa' masa.pk %}" class="pizza-link"></a>
+                        <h2>{{ masa.nombre }}</h2>
+                        </a>
+                        <p>{{ masa.descripcion|truncatewords:20 }}</p>
+                    </div>
+
+                    <div class="pizza-imagen">
+                        {% if masa.imagen %}
+                            <img src="{{ masa.imagen.url }}" alt="{{ masa.nombre }}">
+                        {% else %}
+                            <p>Sin imagen disponible</p>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
             {% endfor %}
         </div>

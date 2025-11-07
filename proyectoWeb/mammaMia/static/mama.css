@@ -247,3 +247,151 @@ footer {
 .btn-limpiar:hover {
   background: #777;
 }
+
+/* Asegurar que las imágenes de masa tengan el mismo tamaño que las de pizza */
+.masas-grid .pizza-imagen img,
+.contenedor .pizza-imagen img {
+    max-width: 250px;
+    border-radius: 10px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos específicos para el detalle de masa */
+.detalle-masa {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.detalle-masa-contenido {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.detalle-masa-info {
+    flex: 1;
+}
+
+.detalle-masa-imagen img {
+    max-width: 350px;
+    border-radius: 10px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para la lista de pizzas relacionadas */
+.pizzas-relacionadas {
+    margin-top: 15px;
+}
+
+.pizza-mini {
+    display: inline-block;
+    margin: 5px 15px 5px 0;
+    padding: 8px 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+}
+
+.pizza-mini a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.pizza-mini a:hover {
+    color: #b32424;
+}
+
+/* Asegurar que el contenedor funcione igual para pizzas y masas */
+.contenedor {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Los mismos estilos de hover para masas */
+.pizza:hover {
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+    transform: scale(1.02);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+/* Añade esto al final de tu mama.css */
+.alergeno {
+    color: #e74c3c;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.alergeno-detalle {
+    background-color: #ffeaa7;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 15px 0;
+    border: 1px solid #fdcb6e;
+}
+
+/* Estilos para los enlaces de masa e ingredientes */
+.enlace-masa {
+    color: #b32424;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.enlace-masa:hover {
+    background: #b32424;
+    color: white;
+    text-decoration: none;
+}
+
+.enlace-ingrediente {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 2px 6px;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+}
+
+.enlace-ingrediente:hover {
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+}
+
+.lista-ingredientes {
+    list-style: none;
+    padding: 0;
+}
+
+.lista-ingredientes li {
+    margin-bottom: 8px;
+    padding: 8px 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+    transition: transform 0.2s ease;
+}
+
+.lista-ingredientes li:hover {
+    transform: translateX(5px);
+    background: #e9ecef;
+}
+
+.alergeno-mini {
+    font-size: 0.8em;
+    margin-left: 5px;
+    color: #e74c3c;
+}

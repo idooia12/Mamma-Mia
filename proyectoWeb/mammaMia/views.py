@@ -16,6 +16,15 @@ def index(request):
 
     return render(request, 'mammaMia/index.html', {'pizzas': pizzas_destacadas})
 
+def todasLasMasas(request):
+    masas = Masa.objects.all().order_by('nombre')
+    return render(request, 'mammaMia/todasMasas.html', {'masas': masas})
+
+def todosLosIngredientes(request):
+    ingredientes = Ingrediente.objects.all().order_by('nombre')
+    return render(request, 'mammaMia/todosIngredientes.html', {'ingredientes': ingredientes})
+
+
 def todasLasPizzas(request):
     pizzas = Pizza.objects.all().order_by('precio')
     masas = Masa.objects.all().order_by('nombre')

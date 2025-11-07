@@ -10,7 +10,11 @@
             <div class="detalle-info">
                 <h2>{{ pizza.nombre }}</h2>
 
-                <p><strong>Masa:</strong> {{ pizza.masa.nombre }}</p>
+                <p><strong>Masa:</strong> 
+                    <a href="{% url 'detalleMasa' pizza.masa.pk %}" class="enlace-masa">
+                        {{ pizza.masa.nombre }}
+                    </a>
+                </p>
                 <p><strong>Precio:</strong> <span class="precio">{{ pizza.precio }} €</span></p>
 
                 {% if pizza.descripcion %}
@@ -18,9 +22,16 @@
                 {% endif %}
 
                 <h3>Ingredientes:</h3>
-                <ul>
+                <ul class="lista-ingredientes">
                     {% for ing in pizza.ingredientes.all %}
-                        <li>{{ ing.nombre }}</li>
+                        <li>
+                            <a href="{% url 'detalleIngrediente' ing.pk %}" class="enlace-ingrediente">
+                                {{ ing.nombre }}
+                                {% if ing.alergeno %}
+                                    <span class="alergeno-mini">⚠️</span>
+                                {% endif %}
+                            </a>
+                        </li>
                     {% empty %}
                         <li>No tiene ingredientes registrados.</li>
                     {% endfor %}
