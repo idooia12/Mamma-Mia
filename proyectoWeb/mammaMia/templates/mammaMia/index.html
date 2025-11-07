@@ -1,26 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Mamma Mia 🍕 - Portada</title>
+{% extends 'mammaMia/base.html' %}
 
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'mama.css' %}">
-</head>
-<body>
+{% block title %}Mamma Mia 🍕 - Portada{% endblock %}
 
-<header>
-    <h1>🍕 Bienvenido a Mamma Mia</h1>
-    <p>¡Elige tu masa y encuentra tu pizza perfecta!</p>
-</header>
+{% block subtitle %}¡Elige tu masa y encuentra tu pizza perfecta!{% endblock %}
 
-<nav>
-    <a href="{% url 'index' %}">🏠 Inicio</a>
-    <a href="{% url 'todasLasPizzas' %}">📋 Todas las pizzas</a>
-</nav>
-
-<div class="contenedor">
-
+{% block content %}
     {% if pizzas %}
         {% for pizza in pizzas %}
             <div class="pizza">
@@ -52,12 +36,4 @@
     {% else %}
         <p>No hay pizzas disponibles todavía.</p>
     {% endif %}
-
-</div>
-
-<footer>
-    <p>© Mamma Mia🍕</p>
-</footer>
-
-</body>
-</html>
+{% endblock %}

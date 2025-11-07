@@ -1,0 +1,25 @@
+{% extends 'mammaMia/base.html' %}
+
+{% block title %}Ingredientes - Mamma Mia{% endblock %}
+
+{% block subtitle %}Todos nuestros ingredientes de calidad{% endblock %}
+
+{% block content %}
+    <h1>🧀 Ingredientes</h1>
+    
+    {% if ingredientes %}
+        <div class="grid-container">
+            {% for ingrediente in ingredientes %}
+            <div class="card">
+                <h3><a href="{% url 'detalleIngrediente' ingrediente.pk %}">{{ ingrediente.nombre }}</a></h3>
+                <p>{{ ingrediente.descripcion }}</p>
+                {% if ingrediente.alergeno %}
+                <span class="alergeno">⚠️ Contiene alérgenos</span>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No hay ingredientes disponibles.</p>
+    {% endif %}
+{% endblock %}

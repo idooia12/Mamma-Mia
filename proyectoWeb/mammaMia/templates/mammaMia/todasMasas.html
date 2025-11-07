@@ -1,0 +1,22 @@
+{% extends 'mammaMia/base.html' %}
+
+{% block title %}Tipos de Masa - Mamma Mia{% endblock %}
+
+{% block subtitle %}Nuestros tipos de masa disponibles{% endblock %}
+
+{% block content %}
+    <h1>🍞 Tipos de Masa</h1>
+    
+    {% if masas %}
+        <div class="grid-container">
+            {% for masa in masas %}
+            <div class="card">
+                <h3><a href="{% url 'detalleMasa' masa.pk %}">{{ masa.nombre }}</a></h3>
+                <p>{{ masa.descripcion }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No hay tipos de masa disponibles.</p>
+    {% endif %}
+{% endblock %}

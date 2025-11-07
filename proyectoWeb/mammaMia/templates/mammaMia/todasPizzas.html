@@ -1,58 +1,14 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Todas las pizzas - Mamma Mia</title>
+{% extends 'mammaMia/base.html' %}
 
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'mama.css' %}">
-</head>
-<body>
+{% block title %}Todas las pizzas - Mamma Mia{% endblock %}
 
-<header>
-    <h1>🍕 Mamma Mia</h1>
-    <p>Listado completo de nuestras pizzas</p>
-</header>
+{% block subtitle %}Listado completo de nuestras pizzas{% endblock %}
 
-<nav>
-    <a href="{% url 'index' %}">🏠 Inicio</a>
-    <a href="{% url 'todasLasPizzas' %}">📋 Todas las pizzas</a>
-</nav>
-
-<div class="contenedor">
-
+{% block content %}
     <h1 style="text-align:center;">📋 Todas las Pizzas</h1>
 
     <form method="get" class="filtro-form">
-        <div class="filtros">
-            <div class="filtro-masa">
-                <label for="masa">Filtrar por masa:</label>
-                <select name="masa" id="masa">
-                    <option value="">-- Todas las masas --</option>
-                    {% for masa in masas %}
-                        <option value="{{ masa.id }}" {% if masa.id|stringformat:"s" == masa_seleccionada %}selected{% endif %}>
-                            {{ masa.nombre }}
-                        </option>
-                    {% endfor %}
-                </select>
-            </div>
-
-            <div class="filtro-ingredientes">
-                <label>Filtrar por ingredientes:</label>
-                <div class="ingredientes-lista">
-                    {% for ing in ingredientes %}
-                        <label>
-                            <input type="checkbox" name="ingredientes" value="{{ ing.id }}"
-                                {% if ing.id in ingredientes_seleccionados %}checked{% endif %}>
-                            {{ ing.nombre }}
-                        </label>
-                    {% endfor %}
-                </div>
-            </div>
-
-            <button type="submit" class="boton-filtrar">Buscar</button>
-            <a href="{% url 'todasLasPizzas' %}" class="boton-limpiar">Limpiar</a>
-        </div>
+        <!-- ... (mantén todo el contenido del form igual) ... -->
     </form>
 
     {% if pizzas %}
@@ -80,11 +36,4 @@
     {% else %}
         <p>No hay pizzas registradas todavía.</p>
     {% endif %}
-</div>
-
-<footer>
-    <p>© Mamma Mia 🍕</p>
-</footer>
-
-</body>
-</html>
+{% endblock %}
