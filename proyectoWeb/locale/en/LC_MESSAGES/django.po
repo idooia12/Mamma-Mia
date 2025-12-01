@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-01 13:13+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\mammaMia\templates\mammaMia\base.html:15
+msgid "¡La mejor pizzería!"
+msgstr "The best pizzeria!"
+
+#: .\mammaMia\templates\mammaMia\base.html:19
+msgid "Inicio"
+msgstr "Home"
+
+#: .\mammaMia\templates\mammaMia\base.html:20
+msgid "Pizzas"
+msgstr "Pizzas"
+
+#: .\mammaMia\templates\mammaMia\base.html:21
+msgid "Masas"
+msgstr "Doughs"
+
+#: .\mammaMia\templates\mammaMia\base.html:22
+msgid "Ingredientes"
+msgstr "Ingredients"
+
+#: .\mammaMia\templates\mammaMia\index.html:4
+msgid "Portada"
+msgstr "Home Page"
+
+#: .\mammaMia\templates\mammaMia\index.html:6
+msgid "¡Elige tu masa y encuentra tu pizza perfecta!"
+msgstr "Choose your dough and find your perfect pizza!"
+
+#: .\mammaMia\templates\mammaMia\index.html:17
+msgid "Masa:"
+msgstr "Dough:"
+
+#: .\mammaMia\templates\mammaMia\index.html:18
+msgid "Precio:"
+msgstr "Price:"
+
+#: .\mammaMia\templates\mammaMia\index.html:31
+msgid "Sin imagen disponible"
+msgstr "No image available"
+
+#: .\mammaMia\templates\mammaMia\index.html:38
+msgid "No hay pizzas disponibles todavía."
+msgstr "No pizzas available yet."
+
+#: .\proyectoWeb\settings.py:145
+msgid "Spanish"
+msgstr "Spanish"
+
+#: .\proyectoWeb\settings.py:146
+msgid "English"
+msgstr "English"

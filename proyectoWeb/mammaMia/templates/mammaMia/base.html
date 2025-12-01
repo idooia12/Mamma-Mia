@@ -1,28 +1,30 @@
+{% load static %}
+{% load i18n %} 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Mamma Mia 🍕{% endblock %}</title>
-    {% load static %}
     <link rel="stylesheet" href="{% static 'mama.css' %}">
 </head>
 <body>
 
 <header>
     <h1>🍕 Mamma Mia</h1>
-    <p>{% block subtitle %}¡La mejor pizzería!{% endblock %}</p>
+    <p>{% block subtitle %}{% trans "¡La mejor pizzería!" %}{% endblock %}</p>
 </header>
 
 <nav>
-    <a href="{% url 'index' %}">🏠 Inicio</a>
-    <a href="{% url 'todasLasPizzas' %}">📋 Pizzas</a>
-    <a href="{% url 'todasLasMasas' %}">🍞 Masas</a>
-    <a href="{% url 'todosIngredientes' %}">🧀 Ingredientes</a>
+    <a href="{% url 'index' %}">🏠 {% trans "Inicio" %}</a>
+    <a href="{% url 'todasLasPizzas' %}">📋 {% trans "Pizzas" %}</a>
+    <a href="{% url 'todasLasMasas' %}">🍞 {% trans "Masas" %}</a>
+    <a href="{% url 'todosIngredientes' %}">🧀 {% trans "Ingredientes" %}</a>
 </nav>
 
 <div class="contenedor">
     {% block content %}
-    <!-- Aquí va el contenido específico de cada página -->
+
     {% endblock %}
 </div>
 

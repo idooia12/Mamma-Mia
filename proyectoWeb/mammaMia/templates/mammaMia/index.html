@@ -1,8 +1,9 @@
 {% extends 'mammaMia/base.html' %}
+{% load i18n %}
 
-{% block title %}Mamma Mia 🍕 - Portada{% endblock %}
+{% block title %}Mamma Mia 🍕 - {% trans "Portada" %}{% endblock %}
 
-{% block subtitle %}¡Elige tu masa y encuentra tu pizza perfecta!{% endblock %}
+{% block subtitle %}{% trans "¡Elige tu masa y encuentra tu pizza perfecta!" %}{% endblock %}
 
 {% block content %}
     {% if pizzas %}
@@ -10,11 +11,11 @@
             <div class="pizza">
                 <div class="pizza-contenido">
                     <div class="pizza-info">
-                        <a href="{% url 'detallePizza' pizza.id %}" class="pizza-link"></a>
+                        <a href="{% url 'detallePizza' pizza.id %}" class="pizza-link">
                             <h2>{{ pizza.nombre }}</h2>
                         </a>
-                        <p><strong>Masa:</strong> {{ pizza.masa.nombre }}</p>
-                        <p><strong>Precio:</strong> <span class="precio">{{ pizza.precio }} €</span></p>
+                        <p><strong>{% trans "Masa:" %}</strong> {{ pizza.masa.nombre }}</p>
+                        <p><strong>{% trans "Precio:" %}</strong> <span class="precio">{{ pizza.precio }} €</span></p>
 
                         {% if pizza.descripcion %}
                             <p>{{ pizza.descripcion }}</p>
@@ -27,13 +28,13 @@
                         </div>
                     {% else %}
                         <div class="pizza-imagen">
-                            <p>Sin imagen disponible</p>
+                            <p>{% trans "Sin imagen disponible" %}</p>
                         </div>
                     {% endif %}
                 </div>
             </div>
         {% endfor %}
     {% else %}
-        <p>No hay pizzas disponibles todavía.</p>
+        <p>{% trans "No hay pizzas disponibles todavía." %}</p>
     {% endif %}
 {% endblock %}

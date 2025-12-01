@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -128,7 +129,28 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Parte del multilinguismo
+from django.utils.translation import gettext_lazy as _
+import os
 
+# Idioma por defecto (Español en este caso)
+LANGUAGE_CODE = 'es'
+
+# Activar el sistema de traducción
+USE_I18N = True
+USE_L10N = True
+
+# Lista de idiomas soportados
+LANGUAGES = [
+    ('es', _('Spanish')),
+    ('en', _('English')),
+]
+
+# Carpeta donde se guardarán los archivos de traducción (.po)
+# Esto crea una carpeta 'locale' en la raíz de tu proyecto
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
 
 #Comandos para runear: workon env1, me meto en las carpetas, python manage.py runserver
 #Crear migraciones: python manage.py makemigrations, python manage.py migrate
