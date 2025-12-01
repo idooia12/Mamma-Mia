@@ -1,8 +1,9 @@
 {% extends 'mammaMia/base.html' %}
+{% load i18n %}
 
 {% block title %}{{ ingrediente.nombre }} - Mamma Mia{% endblock %}
 
-{% block subtitle %}Detalles del ingrediente{% endblock %}
+{% block subtitle %}{% trans "Detalles del ingrediente" %}{% endblock %}
 
 {% block content %}
     <div class="detalle">
@@ -13,11 +14,11 @@
                 
                 {% if ingrediente.alergeno %}
                 <div class="alergeno-detalle">
-                    <strong>⚠️ Este ingrediente contiene alérgenos</strong>
+                    <strong>{% trans "⚠️ Este ingrediente contiene alérgenos" %}</strong>
                 </div>
                 {% endif %}
                 
-                <h3>Pizzas con este ingrediente:</h3>
+                <h3>{% trans "Pizzas con este ingrediente:" %}</h3>
                 {% if ingrediente.pizzas.all %}
                     <ul>
                         {% for pizza in ingrediente.pizzas.all %}
@@ -28,10 +29,10 @@
                         {% endfor %}
                     </ul>
                 {% else %}
-                    <p>No hay pizzas con este ingrediente.</p>
+                    <p>{% trans "No hay pizzas con este ingrediente." %}</p>
                 {% endif %}
                 
-                <a class="boton-volver" href="{% url 'todosIngredientes' %}">⬅ Volver a ingredientes</a>
+                <a class="boton-volver" href="{% url 'todosIngredientes' %}">{% trans "⬅ Volver a ingredientes" %}</a>
             </div>
         </div>
     </div>

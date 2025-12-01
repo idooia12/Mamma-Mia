@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-01 13:13+0100\n"
+"POT-Creation-Date: 2025-12-01 13:38+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,8 +34,88 @@ msgid "Masas"
 msgstr "Doughs"
 
 #: .\mammaMia\templates\mammaMia\base.html:22
+#: .\mammaMia\templates\mammaMia\todosIngredientes.html:4
+#: .\mammaMia\templates\mammaMia\todosIngredientes.html:9
 msgid "Ingredientes"
 msgstr "Ingredients"
+
+#: .\mammaMia\templates\mammaMia\detalleIngrediente.html:6
+msgid "Detalles del ingrediente"
+msgstr ""
+
+#: .\mammaMia\templates\mammaMia\detalleIngrediente.html:17
+msgid "⚠️ Este ingrediente contiene alérgenos"
+msgstr ""
+
+#: .\mammaMia\templates\mammaMia\detalleIngrediente.html:21
+msgid "Pizzas con este ingrediente:"
+msgstr ""
+
+#: .\mammaMia\templates\mammaMia\detalleIngrediente.html:32
+#, fuzzy
+#| msgid "No hay pizzas disponibles todavía."
+msgid "No hay pizzas con este ingrediente."
+msgstr "No pizzas available yet."
+
+#: .\mammaMia\templates\mammaMia\detalleIngrediente.html:35
+msgid "⬅ Volver a ingredientes"
+msgstr ""
+
+#: .\mammaMia\templates\mammaMia\detalleMasa.html:6
+msgid "Detalles del tipo de masa"
+msgstr ""
+
+#: .\mammaMia\templates\mammaMia\detalleMasa.html:15
+msgid "Pizzas con esta masa:"
+msgstr ""
+
+#: .\mammaMia\templates\mammaMia\detalleMasa.html:26
+#, fuzzy
+#| msgid "No hay pizzas disponibles todavía."
+msgid "No hay pizzas con este tipo de masa."
+msgstr "No pizzas available yet."
+
+#: .\mammaMia\templates\mammaMia\detalleMasa.html:29
+msgid "⬅ Volver a masas"
+msgstr ""
+
+#: .\mammaMia\templates\mammaMia\detalleMasa.html:36
+#: .\mammaMia\templates\mammaMia\detallePizza.html:49
+#: .\mammaMia\templates\mammaMia\index.html:31
+#: .\mammaMia\templates\mammaMia\todasMasas.html:27
+#: .\mammaMia\templates\mammaMia\todasPizzas.html:65
+msgid "Sin imagen disponible"
+msgstr "No image available"
+
+#: .\mammaMia\templates\mammaMia\detallePizza.html:7
+msgid "Detalles de la pizza seleccionada"
+msgstr ""
+
+#: .\mammaMia\templates\mammaMia\detallePizza.html:15
+#: .\mammaMia\templates\mammaMia\index.html:17
+#: .\mammaMia\templates\mammaMia\todasPizzas.html:57
+msgid "Masa:"
+msgstr "Dough:"
+
+#: .\mammaMia\templates\mammaMia\detallePizza.html:20
+#: .\mammaMia\templates\mammaMia\index.html:18
+#: .\mammaMia\templates\mammaMia\todasPizzas.html:58
+msgid "Precio:"
+msgstr "Price:"
+
+#: .\mammaMia\templates\mammaMia\detallePizza.html:26
+#, fuzzy
+#| msgid "Ingredientes"
+msgid "Ingredientes:"
+msgstr "Ingredients"
+
+#: .\mammaMia\templates\mammaMia\detallePizza.html:38
+msgid "No tiene ingredientes registrados."
+msgstr ""
+
+#: .\mammaMia\templates\mammaMia\detallePizza.html:42
+msgid "⬅ Volver al listado"
+msgstr ""
 
 #: .\mammaMia\templates\mammaMia\index.html:4
 msgid "Portada"
@@ -45,20 +125,71 @@ msgstr "Home Page"
 msgid "¡Elige tu masa y encuentra tu pizza perfecta!"
 msgstr "Choose your dough and find your perfect pizza!"
 
-#: .\mammaMia\templates\mammaMia\index.html:17
-msgid "Masa:"
-msgstr "Dough:"
-
-#: .\mammaMia\templates\mammaMia\index.html:18
-msgid "Precio:"
-msgstr "Price:"
-
-#: .\mammaMia\templates\mammaMia\index.html:31
-msgid "Sin imagen disponible"
-msgstr "No image available"
-
 #: .\mammaMia\templates\mammaMia\index.html:38
 msgid "No hay pizzas disponibles todavía."
+msgstr "No pizzas available yet."
+
+#: .\mammaMia\templates\mammaMia\todasMasas.html:4
+#: .\mammaMia\templates\mammaMia\todasMasas.html:9
+msgid "Tipos de Masa"
+msgstr ""
+
+#: .\mammaMia\templates\mammaMia\todasMasas.html:6
+msgid "Nuestros tipos de masa disponibles"
+msgstr ""
+
+#: .\mammaMia\templates\mammaMia\todasMasas.html:35
+#, fuzzy
+#| msgid "No hay pizzas disponibles todavía."
+msgid "No hay tipos de masa disponibles."
+msgstr "No pizzas available yet."
+
+#: .\mammaMia\templates\mammaMia\todasPizzas.html:4
+msgid "Todas las pizzas"
+msgstr ""
+
+#: .\mammaMia\templates\mammaMia\todasPizzas.html:6
+msgid "Listado completo de nuestras pizzas"
+msgstr ""
+
+#: .\mammaMia\templates\mammaMia\todasPizzas.html:14
+msgid "Filtrar por masa:"
+msgstr ""
+
+#: .\mammaMia\templates\mammaMia\todasPizzas.html:16
+msgid "Todas"
+msgstr ""
+
+#: .\mammaMia\templates\mammaMia\todasPizzas.html:27
+msgid "Filtrar por ingredientes:"
+msgstr ""
+
+#: .\mammaMia\templates\mammaMia\todasPizzas.html:41
+msgid "Buscar"
+msgstr ""
+
+#: .\mammaMia\templates\mammaMia\todasPizzas.html:42
+msgid "Limpiar"
+msgstr ""
+
+#: .\mammaMia\templates\mammaMia\todasPizzas.html:72
+#, fuzzy
+#| msgid "No hay pizzas disponibles todavía."
+msgid "No hay pizzas registradas todavía."
+msgstr "No pizzas available yet."
+
+#: .\mammaMia\templates\mammaMia\todosIngredientes.html:6
+msgid "Todos nuestros ingredientes de calidad"
+msgstr ""
+
+#: .\mammaMia\templates\mammaMia\todosIngredientes.html:21
+msgid "⚠️ Contiene alérgenos"
+msgstr ""
+
+#: .\mammaMia\templates\mammaMia\todosIngredientes.html:32
+#, fuzzy
+#| msgid "No hay pizzas disponibles todavía."
+msgid "No hay ingredientes disponibles."
 msgstr "No pizzas available yet."
 
 #: .\proyectoWeb\settings.py:145

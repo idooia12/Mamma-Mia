@@ -1,8 +1,10 @@
 {% extends 'mammaMia/base.html' %}
+{% load i18n %} <!-- 1. Cargar librería -->
 
 {% block title %}{{ pizza.nombre }} - Mamma Mia{% endblock %}
 
-{% block subtitle %}Detalles de la pizza seleccionada{% endblock %}
+<!-- 2. Traducir subtítulo -->
+{% block subtitle %}{% trans "Detalles de la pizza seleccionada" %}{% endblock %}
 
 {% block content %}
     <div class="detalle">
@@ -10,18 +12,18 @@
             <div class="detalle-info">
                 <h2>{{ pizza.nombre }}</h2>
 
-                <p><strong>Masa:</strong> 
+                <p><strong>{% trans "Masa:" %}</strong> 
                     <a href="{% url 'detalleMasa' pizza.masa.pk %}" class="enlace-masa">
                         {{ pizza.masa.nombre }}
                     </a>
                 </p>
-                <p><strong>Precio:</strong> <span class="precio">{{ pizza.precio }} €</span></p>
+                <p><strong>{% trans "Precio:" %}</strong> <span class="precio">{{ pizza.precio }} €</span></p>
 
                 {% if pizza.descripcion %}
                     <p>{{ pizza.descripcion }}</p>
                 {% endif %}
 
-                <h3>Ingredientes:</h3>
+                <h3>{% trans "Ingredientes:" %}</h3>
                 <ul class="lista-ingredientes">
                     {% for ing in pizza.ingredientes.all %}
                         <li>
@@ -33,18 +35,18 @@
                             </a>
                         </li>
                     {% empty %}
-                        <li>No tiene ingredientes registrados.</li>
+                        <li>{% trans "No tiene ingredientes registrados." %}</li>
                     {% endfor %}
                 </ul>
 
-                <a class="boton-volver" href="{% url 'todasLasPizzas' %}">⬅ Volver al listado</a>
+                <a class="boton-volver" href="{% url 'todasLasPizzas' %}">{% trans "⬅ Volver al listado" %}</a>
             </div>
 
             <div class="detalle-imagen">
                 {% if pizza.imagen %}
                     <img src="{{ pizza.imagen.url }}" alt="{{ pizza.nombre }}">
                 {% else %}
-                    <p>Sin imagen disponible</p>
+                    <p>{% trans "Sin imagen disponible" %}</p>
                 {% endif %}
             </div>
         </div>

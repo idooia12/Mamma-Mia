@@ -1,8 +1,9 @@
 {% extends 'mammaMia/base.html' %}
+{% load i18n %}
 
 {% block title %}{{ masa.nombre }} - Mamma Mia{% endblock %}
 
-{% block subtitle %}Detalles del tipo de masa{% endblock %}
+{% block subtitle %}{% trans "Detalles del tipo de masa" %}{% endblock %}
 
 {% block content %}
     <div class="detalle">
@@ -11,7 +12,7 @@
                 <h2>{{ masa.nombre }}</h2>
                 <p>{{ masa.descripcion }}</p>
                 
-                <h3>Pizzas con esta masa:</h3>
+                <h3>{% trans "Pizzas con esta masa:" %}</h3>
                 {% if masa.pizzas.all %}
                     <ul>
                         {% for pizza in masa.pizzas.all %}
@@ -22,17 +23,17 @@
                         {% endfor %}
                     </ul>
                 {% else %}
-                    <p>No hay pizzas con este tipo de masa.</p>
+                    <p>{% trans "No hay pizzas con este tipo de masa." %}</p>
                 {% endif %}
                 
-                <a class="boton-volver" href="{% url 'todasLasMasas' %}">⬅ Volver a masas</a>
+                <a class="boton-volver" href="{% url 'todasLasMasas' %}">{% trans "⬅ Volver a masas" %}</a>
             </div>
 
             <div class="detalle-imagen">
                 {% if masa.imagen %}
                     <img src="{{ masa.imagen.url }}" alt="{{ masa.nombre }}">
                 {% else %}
-                    <p>Sin imagen disponible</p>
+                    <p>{% trans "Sin imagen disponible" %}</p>
                 {% endif %}
             </div>
         </div>

@@ -1,11 +1,12 @@
 {% extends 'mammaMia/base.html' %}
+{% load i18n %}
 
-{% block title %}Ingredientes - Mamma Mia{% endblock %}
+{% block title %}{% trans "Ingredientes" %} - Mamma Mia{% endblock %}
 
-{% block subtitle %}Todos nuestros ingredientes de calidad{% endblock %}
+{% block subtitle %}{% trans "Todos nuestros ingredientes de calidad" %}{% endblock %}
 
 {% block content %}
-    <h1>🧀 Ingredientes</h1>
+    <h1>🧀 {% trans "Ingredientes" %}</h1>
     
     {% if ingredientes %}
         <div class="contenedor">
@@ -17,7 +18,7 @@
                         <h2>{{ ingrediente.nombre }}</h2>
                         <p>{{ ingrediente.descripcion|truncatewords:15 }}</p>
                         {% if ingrediente.alergeno %}
-                        <span class="alergeno">⚠️ Contiene alérgenos</span>
+                        <span class="alergeno">{% trans "⚠️ Contiene alérgenos" %}</span>
                         {% endif %}
                     </div>
                     <div class="pizza-imagen">
@@ -28,6 +29,6 @@
             {% endfor %}
         </div>
     {% else %}
-        <p>No hay ingredientes disponibles.</p>
+        <p>{% trans "No hay ingredientes disponibles." %}</p>
     {% endif %}
 {% endblock %}

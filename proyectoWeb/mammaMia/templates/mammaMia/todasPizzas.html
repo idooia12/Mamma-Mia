@@ -1,8 +1,9 @@
 {% extends 'mammaMia/base.html' %}
+{% load i18n %}
 
-{% block title %}Todas las pizzas - Mamma Mia{% endblock %}
+{% block title %}{% trans "Todas las pizzas" %} - Mamma Mia{% endblock %}
 
-{% block subtitle %}Listado completo de nuestras pizzas{% endblock %}
+{% block subtitle %}{% trans "Listado completo de nuestras pizzas" %}{% endblock %}
 
 {% block content %}
 <div class="filtros-container">
@@ -10,9 +11,9 @@
         
         <!-- Filtro por masa -->
         <div class="filtro-seccion">
-            <label for="masa" class="filtro-label">Filtrar por masa:</label>
+            <label for="masa" class="filtro-label">{% trans "Filtrar por masa:" %}</label>
             <select name="masa" id="masa" class="select-masa">
-                <option value="">Todas</option>
+                <option value="">{% trans "Todas" %}</option>
                 {% for masa in masas %}
                 <option value="{{ masa.id }}" {% if masa_seleccionada == masa.id|stringformat:"s" %}selected{% endif %}>
                     {{ masa.nombre }}
@@ -23,7 +24,7 @@
 
         <!-- Filtro por ingredientes -->
         <div class="filtro-seccion ingredientes-grid">
-            <span class="filtro-label">Filtrar por ingredientes:</span>
+            <span class="filtro-label">{% trans "Filtrar por ingredientes:" %}</span>
             <div class="grid-ingredientes">
                 {% for ingrediente in ingredientes %}
                 <label class="checkbox-ingrediente">
@@ -37,8 +38,8 @@
 
         <!-- Botones -->
         <div class="botones-filtro">
-            <button type="submit" class="btn-buscar">Buscar</button>
-            <a href="{% url 'todasLasPizzas' %}" class="btn-limpiar">Limpiar</a>
+            <button type="submit" class="btn-buscar">{% trans "Buscar" %}</button>
+            <a href="{% url 'todasLasPizzas' %}" class="btn-limpiar">{% trans "Limpiar" %}</a>
         </div>
     </form>
 </div>
@@ -50,25 +51,25 @@
         <div class="pizza">
             <div class="pizza-contenido">
                 <div class="pizza-info">
-                    <a href="{% url 'detallePizza' pizza.id %}" class="pizza-link"></a>
+                    <a href="{% url 'detallePizza' pizza.id %}" class="pizza-link">
                         <h2>{{ pizza.nombre }}</h2>
                     </a>
-                    <p><strong>Masa:</strong> {{ pizza.masa.nombre }}</p>
-                    <p><strong>Precio:</strong> <span class="precio">{{ pizza.precio }} €</span></p>
+                    <p><strong>{% trans "Masa:" %}</strong> {{ pizza.masa.nombre }}</p>
+                    <p><strong>{% trans "Precio:" %}</strong> <span class="precio">{{ pizza.precio }} €</span></p>
                 </div>
 
                 <div class="pizza-imagen">
                     {% if pizza.imagen %}
                         <img src="{{ pizza.imagen.url }}" alt="{{ pizza.nombre }}">
                     {% else %}
-                        <p>Sin imagen disponible</p>
+                        <p>{% trans "Sin imagen disponible" %}</p>
                     {% endif %}
                 </div>
             </div>
         </div>
         {% endfor %}
     {% else %}
-        <p>No hay pizzas registradas todavía.</p>
+        <p>{% trans "No hay pizzas registradas todavía." %}</p>
     {% endif %}
 </div>
 {% endblock %}

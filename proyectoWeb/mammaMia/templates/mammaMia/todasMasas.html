@@ -1,11 +1,12 @@
 {% extends 'mammaMia/base.html' %}
+{% load i18n %}
 
-{% block title %}Tipos de Masa - Mamma Mia{% endblock %}
+{% block title %}{% trans "Tipos de Masa" %} - Mamma Mia{% endblock %}
 
-{% block subtitle %}Nuestros tipos de masa disponibles{% endblock %}
+{% block subtitle %}{% trans "Nuestros tipos de masa disponibles" %}{% endblock %}
 
 {% block content %}
-    <h1>🍞 Tipos de Masa</h1>
+    <h1>🍞 {% trans "Tipos de Masa" %}</h1>
     
     {% if masas %}
         <div class="contenedor">
@@ -14,7 +15,7 @@
                 <div class="pizza-contenido">
                     <div class="pizza-info">
                         <a href="{% url 'detalleMasa' masa.pk %}" class="pizza-link"></a>
-                        <h2>{{ masa.nombre }}</h2>
+                            <h2>{{ masa.nombre }}</h2>
                         </a>
                         <p>{{ masa.descripcion|truncatewords:20 }}</p>
                     </div>
@@ -23,7 +24,7 @@
                         {% if masa.imagen %}
                             <img src="{{ masa.imagen.url }}" alt="{{ masa.nombre }}">
                         {% else %}
-                            <p>Sin imagen disponible</p>
+                            <p>{% trans "Sin imagen disponible" %}</p>
                         {% endif %}
                     </div>
                 </div>
@@ -31,6 +32,6 @@
             {% endfor %}
         </div>
     {% else %}
-        <p>No hay tipos de masa disponibles.</p>
+        <p>{% trans "No hay tipos de masa disponibles." %}</p>
     {% endif %}
 {% endblock %}
