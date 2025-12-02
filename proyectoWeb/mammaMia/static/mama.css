@@ -12,6 +12,40 @@ header {
     color: white;
 }
 
+.language-switcher {
+    position: absolute; 
+    top: 25px;          
+    right: 25px;       
+    z-index: 100;       
+}
+
+.language-switcher form {
+    margin: 0;
+}
+
+.language-switcher select {
+    background-color: #CD212A;
+    color: white;              
+    border: 1px solid rgba(255, 255, 255, 0.7); 
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+}
+
+.language-switcher select option {
+    background-color: white;
+    color: #333;
+}
+
+.language-switcher select:hover {
+    background-color: #b31b23; 
+    border-color: white;
+}
+
 h1 {
     text-align: center;
     margin-top: 40px;
