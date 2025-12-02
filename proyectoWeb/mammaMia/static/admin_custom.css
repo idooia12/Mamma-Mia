@@ -1,0 +1,105 @@
+/*admin_custom.css*/
+
+/* IMPORTAR TU FUENTE */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* --- GENERAL --- */
+body {
+    font-family: 'Poppins', sans-serif !important; /* Usar tu fuente */
+    background-color: #faf6f2 !important; /* Tu fondo beige */
+    color: #333;
+}
+
+/* --- CABECERA SUPERIOR --- */
+#header {
+    background: #CD212A !important; /* Tu Rojo Mamma Mia */
+    color: white;
+    border-bottom: 4px solid #009246; /* Un borde verde abajo para la bandera */
+}
+
+#branding h1 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* --- CORRECCIÓN PARA EL TÍTULO BLANCO --- */
+/* Esto fuerza que el enlace del título sea blanco y no rojo */
+#branding h1 a:link, #branding h1 a:visited {
+    color: #ffffff !important;
+}
+
+#user-tools, #user-tools a {
+    color: #ffffff !important; /* Texto blanco en las herramientas de usuario */
+}
+
+/* --- TÍTULOS DE SECCIONES (Las barras azules por defecto) --- */
+.module caption, .module h2 {
+    background-color: #009246 !important;
+    color: white !important;
+    border-radius: 8px 8px 0 0; 
+}
+
+div.breadcrumbs {
+    background-color: white;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+}
+
+div.breadcrumbs a {
+    color: #b32424 !important; /* Enlaces de migas de pan en rojo */
+}
+
+/* --- ENLACES GENERALES --- */
+a:link, a:visited {
+    color: #b32424; /* Rojo oscuro para el resto de enlaces */
+    text-decoration: none;
+}
+
+a:hover {
+    color: #d03b3b;
+    text-decoration: underline;
+}
+
+/* --- BOTONES (Guardar, Añadir, etc.) --- */
+.button, input[type=submit], .submit-row input.default {
+    background: #b32424 !important; /* Tu botón rojo */
+    color: white !important;
+    border: none;
+    border-radius: 8px !important; /* Redondeado como en tu web */
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.button:hover, input[type=submit]:hover {
+    background: #7a0000 !important; /* Efecto hover oscuro */
+}
+
+.button.default {
+    background: #009246 !important; /* El botón principal en verde */
+}
+
+/* --- TABLAS Y LISTAS --- */
+#changelist table {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Tu sombra suave */
+}
+
+#changelist table thead th {
+    background: #fdf5f3; /* Fondo rosado claro para cabeceras de tabla */
+    color: #b32424;
+}
+
+#changelist .results {
+    background-color: white; /* Asegurar fondo blanco en la lista */
+    border-radius: 10px;
+}
+
+/* --- FORMULARIOS --- */
+.form-row {
+    border-bottom: 1px solid #eee;
+    padding: 15px;
+}
