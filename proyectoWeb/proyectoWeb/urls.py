@@ -22,7 +22,7 @@ from django.conf.urls.i18n import i18n_patterns
 
 #No quiero que se traduzcan, de momento vacio
 urlpatterns = [
-
+    path('i18n/', include('django.conf.urls.i18n')), #Esto lo he añadido para poder cambiar el idioma con un boton
 ]
 
 #Traducodas 
