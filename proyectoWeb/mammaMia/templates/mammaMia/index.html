@@ -1,71 +1,79 @@
 {% extends 'mammaMia/base.html' %}
+
 {% load i18n %}
 
-{% block title %}Mamma Mia 🍕 - SPA VUE{% endblock %}
+
+
+{% block title %}Mamma Mia 🍕 - {% trans "Portada" %}{% endblock %}
+
+
+
+{% block subtitle %}{% trans "¡Elige tu masa y encuentra tu pizza perfecta!" %}{% endblock %}
+
+
 
 {% block content %}
-    <p v-if="pizzas.length === 0">
-        {% trans "No hay pizzas disponibles todavía." %}
-    </p>
 
-    <div v-else>
-        <div v-for="pizza in pizzas" :key="pizza.id" class="pizza">
-            <div class="pizza-contenido">
-                <div class="pizza-info">
-                    <a href="#" class="pizza-link">
-                        <h2>[[ pizza.nombre ]]</h2>
-                    </a>
-                    
-                    <p><strong>{% trans "Masa:" %}</strong> [[ pizza.masa ]]</p>
-                    <p><strong>{% trans "Precio:" %}</strong> <span class="precio">[[ pizza.precio ]] €</span></p>
+    {% if pizzas %}
 
-                    <p v-if="pizza.descripcion">[[ pizza.descripcion ]]</p>
+        {% for pizza in pizzas %}
+
+            <div class="pizza">
+
+                <div class="pizza-contenido">
+
+                    <div class="pizza-info">
+
+                        <a href="{% url 'detallePizza' pizza.id %}" class="pizza-link">
+
+                            <h2>{{ pizza.nombre }}</h2>
+
+                        </a>
+
+                        <p><strong>{% trans "Masa:" %}</strong> {{ pizza.masa.nombre }}</p>
+
+                        <p><strong>{% trans "Precio:" %}</strong> <span class="precio">{{ pizza.precio }} €</span></p>
+
+
+
+                        {% if pizza.descripcion %}
+
+                            <p>{{ pizza.descripcion }}</p>
+
+                        {% endif %}
+
+                    </div>
+
+
+
+                    {% if pizza.imagen %}
+
+                        <div class="pizza-imagen">
+
+                            <img src="{{ pizza.imagen.url }}" alt="{{ pizza.nombre }}">
+
+                        </div>
+
+                    {% else %}
+
+                        <div class="pizza-imagen">
+
+                            <p>{% trans "Sin imagen disponible" %}</p>
+
+                        </div>
+
+                    {% endif %}
+
                 </div>
 
-                <div class="pizza-imagen">
-                    <img v-if="pizza.imagen" :src="pizza.imagen" :alt="pizza.nombre">
-                    <p v-else>{% trans "Sin imagen disponible" %}</p>
-                </div>
             </div>
-        </div>
-    </div>
-{% endblock %}
 
-{% block scripts %}
-<script>
-    // Iniciamos la aplicación VUE
-    var app = new Vue({
-        el: '#app',
-        delimiters: ['[[', ']]'],
-        data: {
-            // AQUÍ ESTÁN TUS DATOS (Simulando la base de datos para Netlify)
-            pizzas: [
-                {
-                    id: 1,
-                    nombre: "Margarita",
-                    masa: "Fina",
-                    precio: 9.50,
-                    descripcion: "La clásica italiana con tomate y mozzarella fresca.",
-                    imagen: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=500"
-                },
-                {
-                    id: 2,
-                    nombre: "Pepperoni",
-                    masa: "Gruesa",
-                    precio: 11.00,
-                    descripcion: "Para los amantes del picante.",
-                    imagen: "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500"
-                },
-                {
-                    id: 3,
-                    nombre: "Cuatro Quesos",
-                    masa: "Bordes rellenos",
-                    precio: 12.50,
-                    descripcion: "Mozzarella, Gorgonzola, Parmesano y Cheddar.",
-                    imagen: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500"
-                }
-            ]
-        }
-    })
-</script>
+        {% endfor %}
+
+    {% else %}
+
+        <p>{% trans "No hay pizzas disponibles todavía." %}</p>
+
+    {% endif %}
+
 {% endblock %}
