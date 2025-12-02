@@ -23,14 +23,20 @@
 </nav>
 
 <div class="contenedor">
-    {% block content %}
-
-    {% endblock %}
+    <div id="app">
+        {% block content %}
+        {% endblock %}
+    </div>
 </div>
 
 <footer>
     <p>© Mamma Mia 🍕</p>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+{% block scripts %}
+{% endblock %}
 
 </body>
 </html>
