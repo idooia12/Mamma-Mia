@@ -1,9 +1,8 @@
 {% extends 'mammaMia/base.html' %}
-{% load i18n %} <!-- 1. Cargar librería -->
+{% load i18n %}
 
 {% block title %}{{ pizza.nombre }} - Mamma Mia{% endblock %}
 
-<!-- 2. Traducir subtítulo -->
 {% block subtitle %}{% trans "Detalles de la pizza seleccionada" %}{% endblock %}
 
 {% block content %}
