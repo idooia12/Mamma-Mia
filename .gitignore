@@ -1,0 +1,8 @@
+# Ignorar archivos compilados de Python (la carpeta entera y los archivos sueltos)
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignorar base de datos -> De momento no pero deberiamos hacerlo
+#*.sqlite3
+#db.sqlite3

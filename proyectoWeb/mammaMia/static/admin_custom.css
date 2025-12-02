@@ -1,20 +1,20 @@
 /*admin_custom.css*/
 
-/* IMPORTAR TU FUENTE */
+/* IMPORTAR FUENTE */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 /* --- GENERAL --- */
 body {
-    font-family: 'Poppins', sans-serif !important; /* Usar tu fuente */
-    background-color: #faf6f2 !important; /* Tu fondo beige */
+    font-family: 'Poppins', sans-serif !important; 
+    background-color: #faf6f2 !important;
     color: #333;
 }
 
 /* --- CABECERA SUPERIOR --- */
 #header {
-    background: #CD212A !important; /* Tu Rojo Mamma Mia */
+    background: #CD212A !important; /*!important es para que priorice esto si o si*/
     color: white;
-    border-bottom: 4px solid #009246; /* Un borde verde abajo para la bandera */
+    border-bottom: 4px solid #009246;
 }
 
 #branding h1 {
@@ -22,23 +22,22 @@ body {
     font-weight: 600;
 }
 
-/* --- CORRECCIÓN PARA EL TÍTULO BLANCO --- */
-/* Esto fuerza que el enlace del título sea blanco y no rojo */
 #branding h1 a:link, #branding h1 a:visited {
     color: #ffffff !important;
 }
 
 #user-tools, #user-tools a {
-    color: #ffffff !important; /* Texto blanco en las herramientas de usuario */
+    color: #ffffff !important;
 }
 
-/* --- TÍTULOS DE SECCIONES (Las barras azules por defecto) --- */
+/* --- TÍTULOS DE SECCIONES  --- */
 .module caption, .module h2 {
     background-color: #009246 !important;
     color: white !important;
     border-radius: 8px 8px 0 0; 
 }
 
+/* Breadcrumbs =  Inicio › Mammamia › Pizzas */
 div.breadcrumbs {
     background-color: white;
     color: #333;
@@ -46,12 +45,12 @@ div.breadcrumbs {
 }
 
 div.breadcrumbs a {
-    color: #b32424 !important; /* Enlaces de migas de pan en rojo */
+    color: #b32424 !important;
 }
 
 /* --- ENLACES GENERALES --- */
 a:link, a:visited {
-    color: #b32424; /* Rojo oscuro para el resto de enlaces */
+    color: #b32424;
     text-decoration: none;
 }
 
@@ -60,12 +59,12 @@ a:hover {
     text-decoration: underline;
 }
 
-/* --- BOTONES (Guardar, Añadir, etc.) --- */
+/* --- BOTONES (Guardar, Añadir,) --- */
 .button, input[type=submit], .submit-row input.default {
-    background: #b32424 !important; /* Tu botón rojo */
+    background: #b32424 !important; /* Botón rojo */
     color: white !important;
     border: none;
-    border-radius: 8px !important; /* Redondeado como en tu web */
+    border-radius: 8px !important; /* Redondeado */
     padding: 10px 20px;
     text-transform: uppercase;
     font-weight: bold;
@@ -78,14 +77,14 @@ a:hover {
 }
 
 .button.default {
-    background: #009246 !important; /* El botón principal en verde */
+    background: #009246 !important; /* Botón principal*/
 }
 
 /* --- TABLAS Y LISTAS --- */
 #changelist table {
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Tu sombra suave */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra suave */
 }
 
 #changelist table thead th {
@@ -94,7 +93,7 @@ a:hover {
 }
 
 #changelist .results {
-    background-color: white; /* Asegurar fondo blanco en la lista */
+    background-color: white; /* Fondo blanco en la lista */
     border-radius: 10px;
 }
 
@@ -103,3 +102,4 @@ a:hover {
     border-bottom: 1px solid #eee;
     padding: 15px;
 }
+

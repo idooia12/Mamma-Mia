@@ -1,0 +1,310 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$Tsib13yrmNnh9L2GJ5DfOt$aouMjhO6zZ6gRTNTsV3oBq8fU0n+sztQdf09Iz/EhrY=",
+    "last_login": "2025-11-06T08:39:31.911Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-11-06T08:38:42.015Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$2KwMkwd9PTVhqlTNfgnPd2$0s6Zi6jGS4HZWEGYTbV5VukMdnSdJkhcETvacIzBQs0=",
+    "last_login": "2025-12-02T11:49:21.907Z",
+    "is_superuser": true,
+    "username": "idoia",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-11-07T17:18:23.746Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$mufNUTXGC5j7SRKty5lZHU$VjJGnNvJE8FjxQ3gONfTNHuaej9s0RCa9+c78t7iOj4=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "MarioJefe",
+    "first_name": "Mario",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-12-02T18:01:57Z",
+    "groups": [
+      1
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$aR8KDtP5BHGyRyGK55dQHS$0bs3fisbY4JKBbIEEIgVd5W7p9wRw8qVwXHUAueWdLA=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "Luigi7",
+    "first_name": "Luigi",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-12-02T18:08:50Z",
+    "groups": [
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 1,
+  "fields": {
+    "name": "Jefe de Cocina",
+    "permissions": [
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 2,
+  "fields": {
+    "name": "Pizzero",
+    "permissions": [
+      25,
+      26,
+      28,
+      29,
+      32,
+      34,
+      36
+    ]
+  }
+},
+{
+  "model": "mammaMia.masa",
+  "pk": 1,
+  "fields": {
+    "nombre": "Fina",
+    "descripcion": "Masa fina y crujiente",
+    "imagen": "masas/MasaFina.png"
+  }
+},
+{
+  "model": "mammaMia.masa",
+  "pk": 2,
+  "fields": {
+    "nombre": "Gordita",
+    "descripcion": "Masa gruesa estilo pan",
+    "imagen": "masas/MasaGordita.png"
+  }
+},
+{
+  "model": "mammaMia.masa",
+  "pk": 3,
+  "fields": {
+    "nombre": "Integral",
+    "descripcion": "Masa de trigo integral",
+    "imagen": "masas/MasaIntegral.png"
+  }
+},
+{
+  "model": "mammaMia.ingrediente",
+  "pk": 1,
+  "fields": {
+    "nombre": "Queso Mozzarella",
+    "descripcion": "Queso italiano auténtico",
+    "alergeno": false
+  }
+},
+{
+  "model": "mammaMia.ingrediente",
+  "pk": 2,
+  "fields": {
+    "nombre": "Tomate",
+    "descripcion": "Salsa de tomate natural",
+    "alergeno": false
+  }
+},
+{
+  "model": "mammaMia.ingrediente",
+  "pk": 3,
+  "fields": {
+    "nombre": "Pepperoni",
+    "descripcion": "Embutido especiado",
+    "alergeno": false
+  }
+},
+{
+  "model": "mammaMia.ingrediente",
+  "pk": 4,
+  "fields": {
+    "nombre": "Champiñones",
+    "descripcion": "Frescos y laminados",
+    "alergeno": false
+  }
+},
+{
+  "model": "mammaMia.ingrediente",
+  "pk": 5,
+  "fields": {
+    "nombre": "Jamón York",
+    "descripcion": "Cocido y suave",
+    "alergeno": false
+  }
+},
+{
+  "model": "mammaMia.ingrediente",
+  "pk": 6,
+  "fields": {
+    "nombre": "Cebolla caramelizada",
+    "descripcion": "Dulce y tostada",
+    "alergeno": false
+  }
+},
+{
+  "model": "mammaMia.ingrediente",
+  "pk": 7,
+  "fields": {
+    "nombre": "Aceitunas negras",
+    "descripcion": "Sin hueso",
+    "alergeno": false
+  }
+},
+{
+  "model": "mammaMia.ingrediente",
+  "pk": 8,
+  "fields": {
+    "nombre": "Albahaca fresca",
+    "descripcion": "Aromática y verde",
+    "alergeno": false
+  }
+},
+{
+  "model": "mammaMia.pizza",
+  "pk": 1,
+  "fields": {
+    "nombre": "Margarita",
+    "masa": 1,
+    "precio": "7.90",
+    "descripcion": "Clásica italiana con tomate y queso",
+    "imagen": "pizzas/Margarita.png",
+    "ingredientes": [
+      1,
+      2,
+      8
+    ]
+  }
+},
+{
+  "model": "mammaMia.pizza",
+  "pk": 2,
+  "fields": {
+    "nombre": "Pepperoni Lovers",
+    "masa": 2,
+    "precio": "9.50",
+    "descripcion": "Extra queso y extra pepperoni",
+    "imagen": "pizzas/Peperoni.png",
+    "ingredientes": [
+      1,
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "mammaMia.pizza",
+  "pk": 3,
+  "fields": {
+    "nombre": "Vegetal Mix",
+    "masa": 3,
+    "precio": "8.80",
+    "descripcion": "Ligera y saludable con verduras frescas",
+    "imagen": "pizzas/Vegetal.png",
+    "ingredientes": [
+      2,
+      4,
+      6,
+      7
+    ]
+  }
+},
+{
+  "model": "mammaMia.pizza",
+  "pk": 4,
+  "fields": {
+    "nombre": "Jamón y Queso",
+    "masa": 1,
+    "precio": "8.20",
+    "descripcion": "Suave y cremosa con jamón cocido",
+    "imagen": "pizzas/JamonYQueso.png",
+    "ingredientes": [
+      1,
+      5
+    ]
+  }
+},
+{
+  "model": "mammaMia.pizza",
+  "pk": 5,
+  "fields": {
+    "nombre": "Mediterr�nea",
+    "masa": 3,
+    "precio": "9.10",
+    "descripcion": "Inspirada en sabores del mediterráneo",
+    "imagen": "pizzas/Mediterranea.png",
+    "ingredientes": [
+      1,
+      2,
+      7,
+      8
+    ]
+  }
+},
+{
+  "model": "mammaMia.pizza",
+  "pk": 6,
+  "fields": {
+    "nombre": "Cuatro Quesos",
+    "masa": 2,
+    "precio": "10.00",
+    "descripcion": "Mezcla perfecta de quesos italianos",
+    "imagen": "pizzas/CuatroQuesos.png",
+    "ingredientes": [
+      1,
+      2
+    ]
+  }
+}
+]
