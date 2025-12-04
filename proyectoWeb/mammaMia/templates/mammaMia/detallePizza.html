@@ -1,5 +1,5 @@
 {% extends 'mammaMia/base.html' %}
-{% load i18n %}
+{% load i18n %} 
 
 {% block title %}{{ pizza.nombre }} - Mamma Mia{% endblock %}
 
@@ -38,7 +38,8 @@
                     {% endfor %}
                 </ul>
 
-                <a class="boton-volver" href="{% url 'todas_pizzas' %}">{% trans "⬅ Volver al listado" %}</a>
+                <!-- CORRECCIÓN AQUÍ: 'todasLasPizzas' -->
+                <a class="boton-volver" href="{% url 'todasLasPizzas' %}">{% trans "⬅ Volver al listado" %}</a>
             </div>
 
             <div class="detalle-imagen">

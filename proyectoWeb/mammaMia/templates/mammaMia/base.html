@@ -7,20 +7,35 @@
     <meta charset="UTF-8">
     <title>{% block title %}Mamma Mia 🍕{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'mama.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .language-switcher { position: absolute; top: 25px; right: 25px; z-index: 1000; }
+        .language-switcher select {
+            background-color: #CD212A !important; color: white !important;
+            border: 1px solid rgba(255,255,255,0.8) !important;
+            padding: 5px 10px; border-radius: 4px; font-family: 'Poppins', sans-serif;
+            font-weight: bold; cursor: pointer; outline: none;
+        }
+        .language-switcher select option { background-color: white; color: #333; }
+        .btn-oferta-flotante {
+            background-color: #ff9f43; color: white; padding: 10px 20px;
+            border: none; border-radius: 50px; font-weight: bold; cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: transform 0.2s; margin-top: 10px;
+        }
+        .btn-oferta-flotante:hover { transform: scale(1.05); background-color: #f39c12; }
+    </style>
 </head>
 <body>
 
 <header>
- <div class="language-switcher">
+    <div class="language-switcher">
         <form action="{% url 'set_language' %}" method="post">
             {% csrf_token %}
             <input name="next" type="hidden" value="{{ request.get_full_path }}">
-            
             <select name="language" onchange="this.form.submit()">
                 {% get_current_language as LANGUAGE_CODE %}
                 {% get_available_languages as LANGUAGES %}
                 {% get_language_info_list for LANGUAGES as languages %}
-                
                 {% for language in languages %}
                     <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
                         {{ language.name_local|capfirst }}
@@ -35,25 +50,23 @@
 </header>
 
 <nav>
+    <!-- AQUÍ ESTABA EL LÍO: Los nombres deben coincidir con urls.py name='...' -->
     <a href="{% url 'index' %}">🏠 {% trans "Inicio" %}</a>
-    <a href="{% url 'todas_pizzas' %}">📋 {% trans "Pizzas" %}</a>
-    <a href="{% url 'todas_masas' %}">🍞 {% trans "Masas" %}</a>
-    <a href="{% url 'todos_ingredientes' %}">🧀 {% trans "Ingredientes" %}</a>
+    <a href="{% url 'todasLasPizzas' %}">📋 {% trans "Pizzas" %}</a>
+    <a href="{% url 'todasLasMasas' %}">🍞 {% trans "Masas" %}</a>
+    <a href="{% url 'todosIngredientes' %}">🧀 {% trans "Ingredientes" %}</a>
 </nav>
 
 <div class="contenedor">
-
     {% block content %}
-
     {% endblock %}
-
 </div>
 
 <footer>
-
     <p>© Mamma Mia 🍕</p>
-
+    <button id="btn-oferta" class="btn-oferta-flotante">🎁 {% trans "Ver Oferta Sorpresa" %}</button>
 </footer>
 
+<script src="{% static 'main.js' %}"></script>
 </body>
 </html>
