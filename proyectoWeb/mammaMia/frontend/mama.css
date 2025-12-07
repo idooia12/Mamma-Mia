@@ -1,0 +1,241 @@
+/* --- mama.css (Adaptado para SPA) --- */
+body {
+    background-color: #faf6f2;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+    background: #CD212A;
+    color: white;
+    position: relative;
+}
+
+.language-switcher {
+    position: absolute; 
+    top: 25px; 
+    right: 25px; 
+    z-index: 100;
+}
+
+.language-switcher select {
+    background-color: #CD212A; 
+    color: white; 
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 5px; 
+    padding: 5px 10px; 
+    font-size: 14px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    font-family: 'Poppins', sans-serif; 
+    outline: none;
+}
+
+h1 {
+    text-align: center; 
+    margin-top: 10px; 
+    font-size: 2.2em; 
+    color: white; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 10px; 
+    margin-bottom: 0;
+}
+
+nav {
+    text-align: center; 
+    background: #009246; 
+    padding: 10px;
+}
+
+/* Botones de navegación adaptados para Vue */
+nav button {
+    background: none; 
+    border: none; 
+    font-size: 1rem; 
+    font-family: 'Poppins', sans-serif;
+    margin: 0 15px; 
+    text-decoration: none; 
+    color: white; 
+    font-weight: bold; 
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: 0.3s;
+}
+
+nav button:hover {
+    color: #ffeb3b; 
+    text-decoration: underline;
+}
+
+/* Clase activa para indicar en qué sección estamos */
+nav button.active {
+    color: #ffeb3b;
+    border-bottom: 2px solid #ffeb3b;
+}
+
+.contenedor { 
+    max-width: 900px; 
+    margin: auto; 
+    padding: 20px; 
+}
+
+.pizza {
+    background: white; 
+    padding: 15px; 
+    margin-bottom: 15px; 
+    border-radius: 10px;
+    border: 1px solid #ddd; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+    transition: .2s; 
+    position: relative; 
+    cursor: pointer;
+}
+
+.pizza:hover { 
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.25); 
+    transform: scale(1.02); 
+    transition: all 0.2s ease; 
+    cursor: pointer; 
+}
+
+.pizza-contenido { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 20px; 
+}
+
+.pizza-info { flex: 1; }
+.pizza-info h2 { margin-top: 0; color: #CD212A; }
+.pizza-imagen img { max-width: 250px; border-radius: 10px; box-shadow: 0 0 6px rgba(0, 0, 0, 0.2); }
+.precio { font-weight: bold; color: #008000; font-size: 1.2em; }
+
+footer { 
+    text-align: center; 
+    background: #333; 
+    color: white; 
+    padding: 15px; 
+    margin-top: 30px; 
+}
+
+/* Botón Oferta Flotante */
+.btn-oferta-flotante {
+    background-color: #ff9f43; 
+    color: white; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 50px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
+    transition: transform 0.2s; 
+    margin-top: 10px; 
+    font-family: 'Poppins', sans-serif;
+}
+.btn-oferta-flotante:hover { transform: scale(1.05); background-color: #f39c12; }
+
+/* Estilo del buscador */
+.buscador-container { text-align: center; margin-bottom: 30px; }
+.buscador-input { 
+    padding: 10px; 
+    width: 80%; 
+    max-width: 400px; 
+    border-radius: 20px; 
+    border: 2px solid #CD212A; 
+    outline: none; 
+    font-family: 'Poppins', sans-serif; 
+}
+
+/* Badge para vegetariano */
+.badge-veg { 
+    background: #4CAF50; 
+    color: white; 
+    padding: 2px 8px; 
+    border-radius: 4px; 
+    font-size: 0.8em; 
+    margin-left: 10px; 
+    vertical-align: middle; 
+}
+
+/* Estilos para los filtros */
+.filtros-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    margin-bottom: 30px;
+    border: 1px solid #eee;
+    text-align: left;
+}
+
+.filtro-seccion {
+    margin-bottom: 20px;
+}
+
+.filtro-label {
+    display: block;
+    font-weight: bold;
+    color: #CD212A;
+    margin-bottom: 8px;
+}
+
+.select-masa {
+    width: 100%;
+    max-width: 300px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.grid-ingredientes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.checkbox-ingrediente {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f9f9f9;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.checkbox-ingrediente:hover {
+    background: #fff0f0;
+    border-color: #CD212A;
+}
+
+.botones-filtro {
+    text-align: center;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.btn-limpiar {
+    background: #7f8c8d;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9em;
+    transition: 0.2s;
+}
+
+.btn-limpiar:hover {
+    background: #2c3e50;
+}

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mamma Mia 🍕 - SPA Vue</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="stylesheet" href="mama.css">
+
+    <meta property="og:title" content="Mamma Mia - La mejor pizzería online">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org", 
+      "@type": "Restaurant", 
+      "name": "Mamma Mia", 
+      "servesCuisine": "Pizza"
+    }
+    </script>
+</head>
+<body>
+
+    <div id="app">
+        <header>
+            <div class="language-switcher"><select disabled><option>ES ▾</option></select></div>
+            <h1>🍕 Mamma Mia</h1>
+            <p style="color: white; opacity: 0.9;">{{ subtitle }}</p>
+        </header>
+
+        <nav>
+            <button @click="changeState('home')" :class="{ active: state === 'home' }">🏠 Inicio</button>
+            <button @click="changeState('menu')" :class="{ active: state === 'menu' || state === 'detalle_pizza' }">📋 Pizzas</button>
+            <button @click="changeState('masas')" :class="{ active: state === 'masas' || state === 'detalle_masa' }">🍞 Masas</button>
+            <button @click="changeState('ingredientes')" :class="{ active: state === 'ingredientes' || state === 'detalle_ingrediente' }">🧀 Ingredientes</button>
+        </nav>
+
+        <div class="contenedor">
+            
+            <div v-if="state === 'home'">
+                <div style="text-align: center; padding: 20px 0;">
+                    <h2 style="color: #CD212A;">¡Bienvenido a Mamma Mia!</h2>
+                    <p>Elige tu masa y encuentra tu pizza perfecta.</p>
+                </div>
+                <h3 style="border-left: 5px solid #009246; padding-left: 10px; margin-top: 30px;">
+                    🏆 Nuestras Recomendaciones
+                </h3>
+                <div class="contenedor-pizzas">
+                    <div v-for="pizza in pizzasDestacadas" :key="pizza.id" class="pizza" @click="verDetalle('pizza', pizza)">
+                        <div class="pizza-contenido">
+                            <div class="pizza-info">
+                                <h2>{{ pizza.nombre }} <span style="font-size:0.6em; background:#ff9f43; color:white; padding:2px 6px; border-radius:4px;">Top {{ pizza.masa_nombre }}</span></h2>
+                                <p><strong>Masa:</strong> {{ pizza.masa_nombre }}</p>
+                                <p><strong>Precio:</strong> <span class="precio">{{ pizza.precio }} €</span></p>
+                            </div>
+                            <div class="pizza-imagen">
+                                <img v-if="pizza.imagen" :src="pizza.imagen" :alt="pizza.nombre">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div v-if="state === 'menu'">
+                <div class="buscador-container">
+                    <input type="text" v-model="busqueda" placeholder="🔍 Buscar por nombre..." class="buscador-input">
+                </div>
+                <div class="filtros-container">
+                    <form @submit.prevent>
+                        <div class="filtro-seccion">
+                            <label class="filtro-label">Filtrar por masa:</label>
+                            <select v-model="filtroMasa" class="select-masa">
+                                <option value="">Todas las masas</option>
+                                <option v-for="masa in masas" :value="masa.id">{{ masa.nombre }}</option>
+                            </select>
+                        </div>
+                        <div class="filtro-seccion">
+                            <span class="filtro-label">Filtrar por ingredientes:</span>
+                            <div class="grid-ingredientes">
+                                <label v-for="ing in ingredientes" :key="ing.id" class="checkbox-ingrediente">
+                                    <input type="checkbox" :value="ing.id" v-model="filtroIngredientes"> {{ ing.nombre }}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="botones-filtro">
+                            <button class="btn-limpiar" @click="filtroMasa = ''; filtroIngredientes = []; busqueda = ''">Limpiar Filtros</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div v-for="pizza in pizzasFiltradas" :key="pizza.id" class="pizza" @click="verDetalle('pizza', pizza)" itemscope itemtype="https://schema.org/MenuItem">
+                    <div class="pizza-contenido">
+                        <div class="pizza-info">
+                            <h2 itemprop="name">{{ pizza.nombre }} <span v-if="pizza.vegetariana" class="badge-veg">Vegetariana</span></h2>
+                            <p><strong>Masa:</strong> {{ pizza.masa_nombre }}</p>
+                            <p><strong>Precio:</strong> <span class="precio" itemprop="price">{{ pizza.precio }} €</span></p>
+                            <p v-if="pizza.descripcion">{{ pizza.descripcion }}</p>
+                        </div>
+                        <div class="pizza-imagen">
+                            <img v-if="pizza.imagen" :src="pizza.imagen" :alt="pizza.nombre">
+                        </div>
+                    </div>
+                </div>
+                 <p v-if="!cargando && pizzasFiltradas.length === 0" style="text-align: center; margin-top: 20px;">
+                    No hay pizzas que coincidan con estos filtros 😢
+                </p>
+            </div>
+
+            <div v-if="state === 'masas'">
+                <h2 style="text-align: center; color: #CD212A;">🍞 Tipos de Masas</h2>
+                <div v-for="masa in masas" :key="masa.id" class="pizza" @click="verDetalle('masa', masa)">
+                    <div class="pizza-contenido">
+                        <div class="pizza-info">
+                            <h2>{{ masa.nombre }}</h2>
+                            <p>{{ masa.descripcion }}</p>
+                        </div>
+                        <div class="pizza-imagen">
+                            <img v-if="masa.imagen" :src="masa.imagen" :alt="masa.nombre">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div v-if="state === 'ingredientes'">
+                <h2 style="text-align: center; color: #CD212A;">🧀 Ingredientes</h2>
+                
+                <p v-if="cargando" style="text-align: center; color: #888;">🧀 Cargando despensa...</p>
+                
+                <div v-else>
+                   <div v-for="ing in ingredientes" :key="ing.id" class="pizza" @click="verDetalle('ingrediente', ing)">
+                        <div class="pizza-contenido">
+                            <div class="pizza-info">
+                                <h2>{{ ing.nombre }}</h2>
+                                <p>{{ ing.descripcion }}</p>
+                                <span v-if="ing.alergeno" style="color: red; font-weight: bold; font-size: 0.9em; display: block; margin-top: 5px;">
+                                    ⚠️ Contiene Alérgenos
+                                </span>
+                            </div>
+                            <div class="pizza-imagen" style="display: flex; align-items: center; justify-content: center; font-size: 3em;">
+                                🧀
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p v-if="!cargando && ingredientes.length === 0" style="text-align: center;">No hay ingredientes disponibles.</p>
+            </div>
+
+            <div v-if="state === 'detalle_pizza' && itemSeleccionado" class="detalle">
+                <button class="boton-volver" @click="volver">⬅ Volver</button>
+                
+                <div class="detalle-contenido" style="margin-top: 20px; display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 20px;">
+                    
+                    <div class="detalle-info" style="flex: 1;">
+                        <h2 style="margin-top: 0; color: #CD212A;">{{ itemSeleccionado.nombre }}</h2>
+                        
+                        <p><strong>Masa:</strong> 
+                            <a href="#" @click.prevent="irAMasa(itemSeleccionado.masa_id)" class="enlace-masa">
+                                {{ itemSeleccionado.masa_nombre }}
+                            </a>
+                        </p>
+                        
+                        <p><strong>Precio:</strong> <span class="precio">{{ itemSeleccionado.precio }} €</span></p>
+                        <p>{{ itemSeleccionado.descripcion }}</p>
+
+                        <h3>Ingredientes:</h3>
+                        <ul class="lista-ingredientes">
+                            <li v-for="ing in getIngredientesDePizza(itemSeleccionado)">
+                                <a href="#" @click.prevent="irAIngrediente(ing)" class="enlace-ingrediente">
+                                    {{ ing.nombre }}
+                                    <span v-if="ing.alergeno" style="color:red; font-size:0.8em;">(⚠️)</span>
+                                </a>
+                            </li>
+                            <li v-if="getIngredientesDePizza(itemSeleccionado).length === 0">Sin ingredientes extra.</li>
+                        </ul>
+                    </div>
+
+                    <div class="detalle-imagen" style="flex-shrink: 0; width: 300px;">
+                        <img v-if="itemSeleccionado.imagen" :src="itemSeleccionado.imagen" :alt="itemSeleccionado.nombre" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                    </div>
+                </div>
+            </div>
+
+            <div v-if="state === 'detalle_masa' && itemSeleccionado" class="detalle">
+                <button class="boton-volver" @click="volver">⬅ Volver</button>
+                
+                <div class="detalle-contenido" style="margin-top: 20px; display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 20px;">
+                    
+                    <div class="detalle-info" style="flex: 1;">
+                        <h2 style="margin-top: 0; color: #CD212A;">Masa {{ itemSeleccionado.nombre }}</h2>
+                        <p>{{ itemSeleccionado.descripcion }}</p>
+                        
+                        <h3 style="margin-top: 20px;">Pizzas disponibles con esta masa:</h3>
+                        <ul>
+                            <li v-for="p in getPizzasConMasa(itemSeleccionado.id)" style="margin-bottom: 5px;">
+                                <a href="#" @click.prevent="verDetalle('pizza', p)" style="color:#CD212A; font-weight:bold; text-decoration: none;">
+                                    🍕 {{ p.nombre }}
+                                </a> 
+                                ({{ p.precio }} €)
+                            </li>
+                            <li v-if="getPizzasConMasa(itemSeleccionado.id).length === 0">No hay pizzas con esta masa actualmente.</li>
+                        </ul>
+                    </div>
+
+                    <div class="detalle-imagen" style="flex-shrink: 0; width: 300px;">
+                        <img v-if="itemSeleccionado.imagen" :src="itemSeleccionado.imagen" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                    </div>
+                </div>
+            </div>
+
+            <div v-if="state === 'detalle_ingrediente' && itemSeleccionado" class="detalle">
+                <button class="boton-volver" @click="volver">⬅ Volver</button>
+                
+                <div class="detalle-contenido" style="margin-top: 20px; display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 20px;">
+                    
+                    <div class="detalle-info" style="flex: 1;">
+                        <h2 style="margin-top: 0; color: #CD212A;">{{ itemSeleccionado.nombre }}</h2>
+                        <p>{{ itemSeleccionado.descripcion }}</p>
+                        
+                        <div v-if="itemSeleccionado.alergeno" class="alergeno-detalle" style="margin: 15px 0;">
+                            ⚠️ <strong>Atención:</strong> Este ingrediente contiene alérgenos.
+                        </div>
+
+                        <h3 style="margin-top: 20px;">Pizzas con este ingrediente:</h3>
+                        <ul>
+                            <li v-for="p in getPizzasConIngrediente(itemSeleccionado.id)" style="margin-bottom: 5px;">
+                                <a href="#" @click.prevent="verDetalle('pizza', p)" style="color:#CD212A; font-weight:bold; text-decoration: none;">
+                                    🍕 {{ p.nombre }}
+                                </a>
+                            </li>
+                            <li v-if="getPizzasConIngrediente(itemSeleccionado.id).length === 0">Ninguna pizza usa este ingrediente.</li>
+                        </ul>
+                    </div>
+
+                    <div class="detalle-imagen" style="flex-shrink: 0; width: 300px; text-align: center; font-size: 8em;">
+                        🧀
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© Mamma Mia 🍕</p>
+            <button class="btn-oferta-flotante" @click="mostrarOferta">🎁 Ver Oferta Sorpresa</button>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

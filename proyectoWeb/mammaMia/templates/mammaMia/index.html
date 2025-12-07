@@ -8,9 +8,8 @@
             <div class="pizza">
                 <div class="pizza-contenido">
                     <div class="pizza-info">
-                        <a href="{% url 'detallePizza' pizza.id %}" class="pizza-link">
-                            <h2>{{ pizza.nombre }}</h2>
-                        </a>
+                        <a href="{% url 'detallePizza' pizza.id %}" class="pizza-link"></a>
+                        <h2>{{ pizza.nombre }}</h2>
                         <p><strong>{% trans "Masa:" %}</strong> {{ pizza.masa.nombre }}</p>
                         <p><strong>{% trans "Precio:" %}</strong> <span class="precio">{{ pizza.precio }} €</span></p>
                         {% if pizza.descripcion %}
