@@ -11,12 +11,28 @@
     <link rel="stylesheet" href="mama.css">
 
     <meta property="og:title" content="Mamma Mia - La mejor pizzería online">
+    <meta property="og:description" content="Pide tus pizzas favoritas hechas con masa madre e ingredientes frescos.">
+    <meta property="og:image" content="https://images.pexels.com/photos/905847/pexels-photo-905847.jpeg">
+    <meta property="og:type" content="restaurant">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mamma Mia - Pizzería Online">
+    <meta name="twitter:description" content="Las mejores pizzas artesanas con masa madre.">
+    <meta name="twitter:image" content="https://images.pexels.com/photos/905847/pexels-photo-905847.jpeg">
+
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org", 
-      "@type": "Restaurant", 
-      "name": "Mamma Mia", 
-      "servesCuisine": "Pizza"
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Mamma Mia",
+      "image": "https://images.pexels.com/photos/905847/pexels-photo-905847.jpeg",
+      "servesCuisine": "Pizza",
+      "priceRange": "€€",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bilbao",
+        "addressCountry": "ES"
+      }
     }
     </script>
 </head>
@@ -240,8 +256,11 @@
             </div>
         </div>
 
-        <footer>
-            <p>© Mamma Mia 🍕</p>
+        <footer vocab="https://schema.org/" typeof="WPFooter">
+            <p>
+                <span property="copyrightYear">2025</span> © 
+                <span property="copyrightHolder">Mamma Mia 🍕</span>
+            </p>
             <button class="btn-oferta-flotante" @click="mostrarOferta">🎁 Ver Oferta Sorpresa</button>
         </footer>
     </div>
